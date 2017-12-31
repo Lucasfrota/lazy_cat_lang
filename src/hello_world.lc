@@ -1,1 +1,2 @@
-print "Hello_world"
+hello = "Hello world"
+print hello

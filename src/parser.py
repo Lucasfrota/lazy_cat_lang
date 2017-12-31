@@ -15,8 +15,8 @@ def p_print_expression(p):
     print p[2]
 
 def p_print_string(p):
-    'statement : PRINT QUOTATION ID QUOTATION'
-    print p[3]
+    'statement : PRINT STRING'
+    print p[2][1:-1]
 
 def p_if(p):
     'statement : IF expression '
@@ -27,8 +27,8 @@ def p_statement_assign(p):
     variables[p[1]] = p[3]
 
 def p_string(p):
-    'statement : ID RECEIVE QUOTATION ID QUOTATION'
-    variables[p[1]] = p[4]
+    'statement : ID RECEIVE STRING'
+    variables[p[1]] = p[3][1:-1]
 
 def p_statement_expr(p):
     'statement : expression'
@@ -94,9 +94,6 @@ def p_error(p):
         print("Syntax error at EOF")
 
 parser = yacc.yacc()
-
-def get_parser():
-    return parser
 
 def open_file(file_name):
     if file_name[-3:] == ".lc":

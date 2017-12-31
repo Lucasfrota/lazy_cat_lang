@@ -4,6 +4,7 @@ tokens = [
    'ID',
    'INTEGER',
    'FLOAT',
+   'STRING',
    'PLUS',
    'MINUS',
    'TIMES',
@@ -49,6 +50,7 @@ t_LPAREN    = r'\('
 t_RPAREN    = r'\)'
 t_QUOTATION = r'\"'
 t_RECEIVE   = r'\='
+t_STRING = r'\".*?\"'
 
 t_LT        = r'<'
 t_LE        = r'<='

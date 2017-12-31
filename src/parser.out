@@ -13,15 +13,16 @@ Unused terminals:
     FALSE
     NOT
     OR
+    QUOTATION
 
 Grammar
 
 Rule 0     S' -> statement
 Rule 1     statement -> PRINT expression
-Rule 2     statement -> PRINT QUOTATION ID QUOTATION
+Rule 2     statement -> PRINT STRING
 Rule 3     statement -> IF expression
 Rule 4     statement -> ID RECEIVE expression
-Rule 5     statement -> ID RECEIVE QUOTATION ID QUOTATION
+Rule 5     statement -> ID RECEIVE STRING
 Rule 6     statement -> expression
 Rule 7     statement -> LPAREN expression RPAREN
 Rule 8     expression -> expression LT expression
@@ -51,7 +52,7 @@ FLOAT                : 18
 FOR                  : 
 GE                   : 11
 GT                   : 10
-ID                   : 2 4 5 5 20
+ID                   : 4 5 20
 IF                   : 3
 INTEGER              : 19
 LE                   : 9
@@ -64,11 +65,12 @@ NOT                  :
 OR                   : 
 PLUS                 : 12
 PRINT                : 1 2
-QUOTATION            : 2 2 5 5
+QUOTATION            : 
 RECEIVE              : 4 5
 RETURN               : 
 RPAREN               : 7
 SQUARED              : 
+STRING               : 2 5
 TIMES                : 14
 TRUE                 : 
 error                : 
@@ -84,10 +86,10 @@ state 0
 
     (0) S' -> . statement
     (1) statement -> . PRINT expression
-    (2) statement -> . PRINT QUOTATION ID QUOTATION
+    (2) statement -> . PRINT STRING
     (3) statement -> . IF expression
     (4) statement -> . ID RECEIVE expression
-    (5) statement -> . ID RECEIVE QUOTATION ID QUOTATION
+    (5) statement -> . ID RECEIVE STRING
     (6) statement -> . expression
     (7) statement -> . LPAREN expression RPAREN
     (8) expression -> . expression LT expression
@@ -119,7 +121,7 @@ state 0
 state 1
 
     (1) statement -> PRINT . expression
-    (2) statement -> PRINT . QUOTATION ID QUOTATION
+    (2) statement -> PRINT . STRING
     (8) expression -> . expression LT expression
     (9) expression -> . expression LE expression
     (10) expression -> . expression GT expression
@@ -134,14 +136,14 @@ state 1
     (19) expression -> . INTEGER
     (20) expression -> . ID
 
-    QUOTATION       shift and go to state 13
+    STRING          shift and go to state 11
     -               shift and go to state 3
     (               shift and go to state 2
     FLOAT           shift and go to state 9
     INTEGER         shift and go to state 5
     ID              shift and go to state 12
 
-    expression                     shift and go to state 11
+    expression                     shift and go to state 13
 
 state 2
 
@@ -244,7 +246,7 @@ state 6
 state 7
 
     (4) statement -> ID . RECEIVE expression
-    (5) statement -> ID . RECEIVE QUOTATION ID QUOTATION
+    (5) statement -> ID . RECEIVE STRING
     (20) expression -> ID .
 
     RECEIVE         shift and go to state 17
@@ -326,25 +328,9 @@ state 10
 
 state 11
 
-    (1) statement -> PRINT expression .
-    (8) expression -> expression . LT expression
-    (9) expression -> expression . LE expression
-    (10) expression -> expression . GT expression
-    (11) expression -> expression . GE expression
-    (12) expression -> expression . PLUS expression
-    (13) expression -> expression . MINUS expression
-    (14) expression -> expression . TIMES expression
-    (15) expression -> expression . DIVIDE expression
+    (2) statement -> PRINT STRING .
 
-    $end            reduce using rule 1 (statement -> PRINT expression .)
-    LT              shift and go to state 23
-    LE              shift and go to state 19
-    GT              shift and go to state 24
-    GE              shift and go to state 21
-    PLUS            shift and go to state 25
-    MINUS           shift and go to state 26
-    TIMES           shift and go to state 22
-    DIVIDE          shift and go to state 20
+    $end            reduce using rule 2 (statement -> PRINT STRING .)
 
 
 state 12
@@ -366,9 +352,25 @@ state 12
 
 state 13
 
-    (2) statement -> PRINT QUOTATION . ID QUOTATION
+    (1) statement -> PRINT expression .
+    (8) expression -> expression . LT expression
+    (9) expression -> expression . LE expression
+    (10) expression -> expression . GT expression
+    (11) expression -> expression . GE expression
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
 
-    ID              shift and go to state 27
+    $end            reduce using rule 1 (statement -> PRINT expression .)
+    LT              shift and go to state 23
+    LE              shift and go to state 19
+    GT              shift and go to state 24
+    GE              shift and go to state 21
+    PLUS            shift and go to state 25
+    MINUS           shift and go to state 26
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 20
 
 
 state 14
@@ -383,7 +385,7 @@ state 14
     (14) expression -> expression . TIMES expression
     (15) expression -> expression . DIVIDE expression
 
-    )               shift and go to state 28
+    )               shift and go to state 27
     LT              shift and go to state 23
     LE              shift and go to state 19
     GT              shift and go to state 24
@@ -440,7 +442,7 @@ state 16
     (14) expression -> expression . TIMES expression
     (15) expression -> expression . DIVIDE expression
 
-    RPAREN          shift and go to state 29
+    RPAREN          shift and go to state 28
     LT              shift and go to state 23
     LE              shift and go to state 19
     GT              shift and go to state 24
@@ -454,7 +456,7 @@ state 16
 state 17
 
     (4) statement -> ID RECEIVE . expression
-    (5) statement -> ID RECEIVE . QUOTATION ID QUOTATION
+    (5) statement -> ID RECEIVE . STRING
     (8) expression -> . expression LT expression
     (9) expression -> . expression LE expression
     (10) expression -> . expression GT expression
@@ -469,7 +471,7 @@ state 17
     (19) expression -> . INTEGER
     (20) expression -> . ID
 
-    QUOTATION       shift and go to state 31
+    STRING          shift and go to state 29
     -               shift and go to state 3
     (               shift and go to state 2
     FLOAT           shift and go to state 9
@@ -524,7 +526,7 @@ state 19
     INTEGER         shift and go to state 5
     ID              shift and go to state 12
 
-    expression                     shift and go to state 32
+    expression                     shift and go to state 31
 
 state 20
 
@@ -549,7 +551,7 @@ state 20
     INTEGER         shift and go to state 5
     ID              shift and go to state 12
 
-    expression                     shift and go to state 33
+    expression                     shift and go to state 32
 
 state 21
 
@@ -574,7 +576,7 @@ state 21
     INTEGER         shift and go to state 5
     ID              shift and go to state 12
 
-    expression                     shift and go to state 34
+    expression                     shift and go to state 33
 
 state 22
 
@@ -599,7 +601,7 @@ state 22
     INTEGER         shift and go to state 5
     ID              shift and go to state 12
 
-    expression                     shift and go to state 35
+    expression                     shift and go to state 34
 
 state 23
 
@@ -624,7 +626,7 @@ state 23
     INTEGER         shift and go to state 5
     ID              shift and go to state 12
 
-    expression                     shift and go to state 36
+    expression                     shift and go to state 35
 
 state 24
 
@@ -649,7 +651,7 @@ state 24
     INTEGER         shift and go to state 5
     ID              shift and go to state 12
 
-    expression                     shift and go to state 37
+    expression                     shift and go to state 36
 
 state 25
 
@@ -674,7 +676,7 @@ state 25
     INTEGER         shift and go to state 5
     ID              shift and go to state 12
 
-    expression                     shift and go to state 38
+    expression                     shift and go to state 37
 
 state 26
 
@@ -699,16 +701,9 @@ state 26
     INTEGER         shift and go to state 5
     ID              shift and go to state 12
 
-    expression                     shift and go to state 39
+    expression                     shift and go to state 38
 
 state 27
-
-    (2) statement -> PRINT QUOTATION ID . QUOTATION
-
-    QUOTATION       shift and go to state 40
-
-
-state 28
 
     (17) expression -> ( expression ) .
 
@@ -725,11 +720,18 @@ state 28
     RPAREN          reduce using rule 17 (expression -> ( expression ) .)
 
 
-state 29
+state 28
 
     (7) statement -> LPAREN expression RPAREN .
 
     $end            reduce using rule 7 (statement -> LPAREN expression RPAREN .)
+
+
+state 29
+
+    (5) statement -> ID RECEIVE STRING .
+
+    $end            reduce using rule 5 (statement -> ID RECEIVE STRING .)
 
 
 state 30
@@ -756,13 +758,6 @@ state 30
 
 
 state 31
-
-    (5) statement -> ID RECEIVE QUOTATION . ID QUOTATION
-
-    ID              shift and go to state 41
-
-
-state 32
 
     (9) expression -> expression LE expression .
     (8) expression -> expression . LT expression
@@ -804,7 +799,7 @@ state 32
   ! DIVIDE          [ reduce using rule 9 (expression -> expression LE expression .) ]
 
 
-state 33
+state 32
 
     (15) expression -> expression DIVIDE expression .
     (8) expression -> expression . LT expression
@@ -838,7 +833,7 @@ state 33
   ! DIVIDE          [ shift and go to state 20 ]
 
 
-state 34
+state 33
 
     (11) expression -> expression GE expression .
     (8) expression -> expression . LT expression
@@ -880,7 +875,7 @@ state 34
   ! DIVIDE          [ reduce using rule 11 (expression -> expression GE expression .) ]
 
 
-state 35
+state 34
 
     (14) expression -> expression TIMES expression .
     (8) expression -> expression . LT expression
@@ -914,7 +909,7 @@ state 35
   ! DIVIDE          [ shift and go to state 20 ]
 
 
-state 36
+state 35
 
     (8) expression -> expression LT expression .
     (8) expression -> expression . LT expression
@@ -956,7 +951,7 @@ state 36
   ! DIVIDE          [ reduce using rule 8 (expression -> expression LT expression .) ]
 
 
-state 37
+state 36
 
     (10) expression -> expression GT expression .
     (8) expression -> expression . LT expression
@@ -998,7 +993,7 @@ state 37
   ! DIVIDE          [ reduce using rule 10 (expression -> expression GT expression .) ]
 
 
-state 38
+state 37
 
     (12) expression -> expression PLUS expression .
     (8) expression -> expression . LT expression
@@ -1032,7 +1027,7 @@ state 38
   ! MINUS           [ shift and go to state 26 ]
 
 
-state 39
+state 38
 
     (13) expression -> expression MINUS expression .
     (8) expression -> expression . LT expression
@@ -1065,46 +1060,33 @@ state 39
   ! PLUS            [ shift and go to state 25 ]
   ! MINUS           [ shift and go to state 26 ]
 
-
-state 40
-
-    (2) statement -> PRINT QUOTATION ID QUOTATION .
-
-    $end            reduce using rule 2 (statement -> PRINT QUOTATION ID QUOTATION .)
-
-
-state 41
-
-    (5) statement -> ID RECEIVE QUOTATION ID . QUOTATION
-
-    QUOTATION       shift and go to state 42
-
-
-state 42
-
-    (5) statement -> ID RECEIVE QUOTATION ID QUOTATION .
-
-    $end            reduce using rule 5 (statement -> ID RECEIVE QUOTATION ID QUOTATION .)
-
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for LT in state 32 resolved as shift
-WARNING: shift/reduce conflict for LE in state 32 resolved as shift
-WARNING: shift/reduce conflict for GT in state 32 resolved as shift
-WARNING: shift/reduce conflict for GE in state 32 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 32 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 32 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 32 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 32 resolved as shift
-WARNING: shift/reduce conflict for LT in state 34 resolved as shift
-WARNING: shift/reduce conflict for LE in state 34 resolved as shift
-WARNING: shift/reduce conflict for GT in state 34 resolved as shift
-WARNING: shift/reduce conflict for GE in state 34 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 34 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 34 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 34 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 34 resolved as shift
+WARNING: shift/reduce conflict for LT in state 31 resolved as shift
+WARNING: shift/reduce conflict for LE in state 31 resolved as shift
+WARNING: shift/reduce conflict for GT in state 31 resolved as shift
+WARNING: shift/reduce conflict for GE in state 31 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 31 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 31 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 31 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 31 resolved as shift
+WARNING: shift/reduce conflict for LT in state 33 resolved as shift
+WARNING: shift/reduce conflict for LE in state 33 resolved as shift
+WARNING: shift/reduce conflict for GT in state 33 resolved as shift
+WARNING: shift/reduce conflict for GE in state 33 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 33 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 33 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 33 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 33 resolved as shift
+WARNING: shift/reduce conflict for LT in state 35 resolved as shift
+WARNING: shift/reduce conflict for LE in state 35 resolved as shift
+WARNING: shift/reduce conflict for GT in state 35 resolved as shift
+WARNING: shift/reduce conflict for GE in state 35 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 35 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 35 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 35 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 35 resolved as shift
 WARNING: shift/reduce conflict for LT in state 36 resolved as shift
 WARNING: shift/reduce conflict for LE in state 36 resolved as shift
 WARNING: shift/reduce conflict for GT in state 36 resolved as shift
@@ -1113,11 +1095,3 @@ WARNING: shift/reduce conflict for PLUS in state 36 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 36 resolved as shift
 WARNING: shift/reduce conflict for TIMES in state 36 resolved as shift
 WARNING: shift/reduce conflict for DIVIDE in state 36 resolved as shift
-WARNING: shift/reduce conflict for LT in state 37 resolved as shift
-WARNING: shift/reduce conflict for LE in state 37 resolved as shift
-WARNING: shift/reduce conflict for GT in state 37 resolved as shift
-WARNING: shift/reduce conflict for GE in state 37 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 37 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 37 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 37 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 37 resolved as shift
