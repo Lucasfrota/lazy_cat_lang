@@ -95,16 +95,6 @@ def find_column(input,token):
     column = (token.lexpos - last_cr) + 1
     return column
 
-'''
-def t_eof(t):
-    # Get more input (Example)
-    more = raw_input('... ')
-    if more:
-        self.lexer.input(more)
-        return self.lexer.token()
-    return N ""
-'''
-
 lexer = lex.lex()
 
 data = '''

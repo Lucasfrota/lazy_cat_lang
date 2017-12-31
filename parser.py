@@ -1,6 +1,6 @@
 from sys import *
 import ply.yacc as yacc
-from tolkenizer import tokens
+from lex import tokens
 
 precedence = (
     ('left', 'PLUS', 'MINUS'),
@@ -40,9 +40,9 @@ def p_statement_paren(p):
 
 def p_boolean_expression(p):
     '''expression : expression LT expression
-                    | expression LE expression
-                    | expression GT expression
-                    | expression GE expression'''
+                  | expression LE expression
+                  | expression GT expression
+                  | expression GE expression'''
     if p[2] == '<':
         p[0] = p[1] < p[3]
     elif p[2] == '<=':
@@ -99,15 +99,20 @@ def get_parser():
     return parser
 
 def open_file(file_name):
-    data = open(file_name, "r").read()
-    return data
+    if file_name[-5:] == ".lazy":
+        data = open(file_name, "r").read()
+        return data
+    else:
+        print "the file extension is incorrect, it should be .lazy"
+        return None
 
 if __name__ == '__main__':
 
     try:
 
         data = open_file(argv[1])
-        parser.parse(data)
+        if data is not None:
+            parser.parse(data)
 
     except:
 
