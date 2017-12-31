@@ -14,8 +14,6 @@ variables = {}
 current_line = 0
 code_lines = []
 
-
-
 def p_for_expression(p):
     'statement : FOR expression TO expression COLON'
 
@@ -23,16 +21,48 @@ def p_for_expression(p):
 
     line_counter = current_line + 1
     is_in_loop = True
-    while is_in_loop:
-        if code_lines[line_counter] == 'end\n':
-            is_in_loop = False
-        else:
+    while code_lines[line_counter] != 'end\n':
+        commands_in_loop.append(code_lines[line_counter])
+        line_counter += 1
+
+    if p[4] > p[2]:
+        for i in range(p[2], p[4]):
+            for j in commands_in_loop:
+                parser.parse(j)
+    else:
+        sec_num = p[4]
+        while sec_num < p[2]:
+            for j in commands_in_loop:
+                parser.parse(j)
+            sec_num += 1
+
+def p_for_in_expression(p):
+        'statement : FOR ID IN expression TO expression COLON'
+
+        variables[p[2]] = None
+
+        commands_in_loop = []
+
+        line_counter = current_line + 1
+        is_in_loop = True
+        while code_lines[line_counter] != 'end\n':
             commands_in_loop.append(code_lines[line_counter])
             line_counter += 1
 
-    for i in range(p[2], p[4]):
-        for j in commands_in_loop:
-            parser.parse(j)
+        if p[6] > p[4]:
+            for i in range(p[4], p[6]):
+                variables[p[2]] = i
+                for j in commands_in_loop:
+                    parser.parse(j)
+            variables[p[2]] = variables[p[2]] + 1
+        else:
+            sec_num = p[4]
+            while sec_num > p[6]:
+                variables[p[2]] = sec_num
+                for j in commands_in_loop:
+                    parser.parse(j)
+                sec_num -= 1
+            variables[p[2]] = variables[p[2]] - 1
 
 def p_end(p):
     'statement : END'

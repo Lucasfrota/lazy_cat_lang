@@ -1,5 +1,5 @@
 a = 0
-for 1 to 3:
+for 2 to 2:
   a = a + 1
   print a
 end

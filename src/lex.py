@@ -38,6 +38,7 @@ reserved = {
    'and' : 'AND',
    'not' : 'NOT',
    'return' : 'RETURN',
+   'in' : 'IN',
    'end' : 'END',
 }
 
