@@ -100,8 +100,8 @@ def get_parser():
 
 def open_file(file_name):
     if file_name[-3:] == ".lc":
-        data = open(file_name, "r").read()
-        return data
+        code_lines = open(file_name, "r").readlines()
+        return code_lines
     else:
         print "the file extension is incorrect, it should be .lc"
         return None
@@ -109,11 +109,10 @@ def open_file(file_name):
 if __name__ == '__main__':
 
     try:
-
-        data = open_file(argv[1])
-        if data is not None:
-            parser.parse(data)
-
+        code_lines = open_file(argv[1])
+        if code_lines is not None:
+            for line in code_lines:
+                parser.parse(line)
     except:
 
         while True:
