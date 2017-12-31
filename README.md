@@ -9,3 +9,4 @@ Lazy cat is a programming language that aims to be so simple that any programmer
 * string concatenation
 * print function
 * for loop
+* for in I loop
