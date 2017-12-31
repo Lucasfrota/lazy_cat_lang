@@ -149,7 +149,7 @@ def p_error(p):
     if p:
         print("Syntax error at '%s'" % p.value)
     else:
-        print("Syntax error at EOF")
+        pass#print("Syntax error at EOF")
 
 parser = yacc.yacc()
 
