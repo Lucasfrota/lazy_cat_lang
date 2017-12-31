@@ -5,9 +5,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "leftPLUSMINUSleftTIMESDIVIDErightUMINUSID INTEGER FLOAT PLUS MINUS TIMES DIVIDE LPAREN RPAREN SQUARED QUOTATION RECEIVE NEWLINE LT LE GT GE AND FALSE ELSE NOT RETURN TRUE IF NONE FOR PRINT ORstatement : PRINT expressionstatement : PRINT QUOTATION ID QUOTATIONstatement : IF expression statement : ID RECEIVE expression NEWLINEstatement : ID RECEIVE QUOTATION ID QUOTATION NEWLINEstatement : expressionstatement : LPAREN expression RPARENexpression : expression LT expression\n                    | expression LE expression\n                    | expression GT expression\n                    | expression GE expressionexpression : expression PLUS expression\n                  | expression MINUS expression\n                  | expression TIMES expression\n                  | expression DIVIDE expressionexpression : '-' expression %prec UMINUSexpression : '(' expression ')'expression : FLOAT\n                  | INTEGERexpression : ID"
+_lr_signature = "leftPLUSMINUSleftTIMESDIVIDErightUMINUSID INTEGER FLOAT PLUS MINUS TIMES DIVIDE LPAREN RPAREN SQUARED QUOTATION RECEIVE NEWLINE LT LE GT GE AND FALSE ELSE NOT RETURN TRUE IF NONE FOR PRINT ORstatement : PRINT expressionstatement : PRINT QUOTATION ID QUOTATIONstatement : IF expression statement : ID RECEIVE expressionstatement : ID RECEIVE QUOTATION ID QUOTATION NEWLINEstatement : expressionstatement : LPAREN expression RPARENexpression : expression LT expression\n                    | expression LE expression\n                    | expression GT expression\n                    | expression GE expressionexpression : expression PLUS expression\n                  | expression MINUS expression\n                  | expression TIMES expression\n                  | expression DIVIDE expressionexpression : '-' expression %prec UMINUSexpression : '(' expression ')'expression : FLOAT\n                  | INTEGERexpression : ID"
     
-_lr_action_items = {'PRINT':([0,],[1,]),'MINUS':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,26,26,-20,26,-16,26,26,-17,26,26,-15,26,-14,26,26,-12,-13,]),'LE':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,19,19,-20,19,-16,19,19,-17,19,19,-15,19,-14,19,19,-12,-13,]),'RPAREN':([5,9,12,15,16,28,32,33,34,35,36,37,38,39,],[-19,-18,-20,-16,29,-17,-9,-15,-11,-14,-8,-10,-12,-13,]),')':([5,9,12,14,15,28,32,33,34,35,36,37,38,39,],[-19,-18,-20,28,-16,-17,-9,-15,-11,-14,-8,-10,-12,-13,]),'(':([0,1,2,3,6,8,17,19,20,21,22,23,24,25,26,],[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,]),'NEWLINE':([5,9,12,15,28,30,32,33,34,35,36,37,38,39,43,],[-19,-18,-20,-16,-17,41,-9,-15,-11,-14,-8,-10,-12,-13,44,]),'-':([0,1,2,3,6,8,17,19,20,21,22,23,24,25,26,],[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,]),'LT':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,23,23,-20,23,-16,23,23,-17,23,23,-15,23,-14,23,23,-12,-13,]),'PLUS':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,25,25,-20,25,-16,25,25,-17,25,25,-15,25,-14,25,25,-12,-13,]),'INTEGER':([0,1,2,3,6,8,17,19,20,21,22,23,24,25,26,],[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,]),'$end':([4,5,7,9,10,11,12,15,18,28,29,32,33,34,35,36,37,38,39,40,41,44,],[0,-19,-20,-18,-6,-1,-20,-16,-3,-17,-7,-9,-15,-11,-14,-8,-10,-12,-13,-2,-4,-5,]),'GT':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,24,24,-20,24,-16,24,24,-17,24,24,-15,24,-14,24,24,-12,-13,]),'DIVIDE':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,20,20,-20,20,-16,20,20,-17,20,20,-15,20,-14,20,20,20,20,]),'RECEIVE':([7,],[17,]),'TIMES':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,22,22,-20,22,-16,22,22,-17,22,22,-15,22,-14,22,22,22,22,]),'GE':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,21,21,-20,21,-16,21,21,-17,21,21,-15,21,-14,21,21,-12,-13,]),'LPAREN':([0,],[6,]),'ID':([0,1,2,3,6,8,13,17,19,20,21,22,23,24,25,26,31,],[7,12,12,12,12,12,27,12,12,12,12,12,12,12,12,12,42,]),'IF':([0,],[8,]),'FLOAT':([0,1,2,3,6,8,17,19,20,21,22,23,24,25,26,],[9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,]),'QUOTATION':([1,17,27,42,],[13,31,40,43,]),}
+_lr_action_items = {'PRINT':([0,],[1,]),'MINUS':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,26,26,-20,26,-16,26,26,-17,26,26,-15,26,-14,26,26,-12,-13,]),'LE':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,19,19,-20,19,-16,19,19,-17,19,19,-15,19,-14,19,19,-12,-13,]),'RPAREN':([5,9,12,15,16,28,32,33,34,35,36,37,38,39,],[-19,-18,-20,-16,29,-17,-9,-15,-11,-14,-8,-10,-12,-13,]),')':([5,9,12,14,15,28,32,33,34,35,36,37,38,39,],[-19,-18,-20,28,-16,-17,-9,-15,-11,-14,-8,-10,-12,-13,]),'(':([0,1,2,3,6,8,17,19,20,21,22,23,24,25,26,],[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,]),'NEWLINE':([42,],[43,]),'-':([0,1,2,3,6,8,17,19,20,21,22,23,24,25,26,],[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,]),'LT':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,23,23,-20,23,-16,23,23,-17,23,23,-15,23,-14,23,23,-12,-13,]),'PLUS':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,25,25,-20,25,-16,25,25,-17,25,25,-15,25,-14,25,25,-12,-13,]),'INTEGER':([0,1,2,3,6,8,17,19,20,21,22,23,24,25,26,],[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,]),'$end':([4,5,7,9,10,11,12,15,18,28,29,30,32,33,34,35,36,37,38,39,40,43,],[0,-19,-20,-18,-6,-1,-20,-16,-3,-17,-7,-4,-9,-15,-11,-14,-8,-10,-12,-13,-2,-5,]),'GT':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,24,24,-20,24,-16,24,24,-17,24,24,-15,24,-14,24,24,-12,-13,]),'DIVIDE':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,20,20,-20,20,-16,20,20,-17,20,20,-15,20,-14,20,20,20,20,]),'RECEIVE':([7,],[17,]),'TIMES':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,22,22,-20,22,-16,22,22,-17,22,22,-15,22,-14,22,22,22,22,]),'GE':([5,7,9,10,11,12,14,15,16,18,28,30,32,33,34,35,36,37,38,39,],[-19,-20,-18,21,21,-20,21,-16,21,21,-17,21,21,-15,21,-14,21,21,-12,-13,]),'LPAREN':([0,],[6,]),'ID':([0,1,2,3,6,8,13,17,19,20,21,22,23,24,25,26,31,],[7,12,12,12,12,12,27,12,12,12,12,12,12,12,12,12,41,]),'IF':([0,],[8,]),'FLOAT':([0,1,2,3,6,8,17,19,20,21,22,23,24,25,26,],[9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,]),'QUOTATION':([1,17,27,41,],[13,31,40,42,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -26,24 +26,24 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> statement","S'",1,None,None,None),
-  ('statement -> PRINT expression','statement',2,'p_print_expression','parser.py',13),
-  ('statement -> PRINT QUOTATION ID QUOTATION','statement',4,'p_print_string','parser.py',17),
-  ('statement -> IF expression','statement',2,'p_if','parser.py',21),
-  ('statement -> ID RECEIVE expression NEWLINE','statement',4,'p_statement_assign','parser.py',25),
-  ('statement -> ID RECEIVE QUOTATION ID QUOTATION NEWLINE','statement',6,'p_string','parser.py',29),
-  ('statement -> expression','statement',1,'p_statement_expr','parser.py',33),
-  ('statement -> LPAREN expression RPAREN','statement',3,'p_statement_paren','parser.py',37),
-  ('expression -> expression LT expression','expression',3,'p_boolean_expression','parser.py',41),
-  ('expression -> expression LE expression','expression',3,'p_boolean_expression','parser.py',42),
-  ('expression -> expression GT expression','expression',3,'p_boolean_expression','parser.py',43),
-  ('expression -> expression GE expression','expression',3,'p_boolean_expression','parser.py',44),
-  ('expression -> expression PLUS expression','expression',3,'p_expression_binop','parser.py',55),
-  ('expression -> expression MINUS expression','expression',3,'p_expression_binop','parser.py',56),
-  ('expression -> expression TIMES expression','expression',3,'p_expression_binop','parser.py',57),
-  ('expression -> expression DIVIDE expression','expression',3,'p_expression_binop','parser.py',58),
-  ('expression -> - expression','expression',2,'p_expression_uminus','parser.py',69),
-  ('expression -> ( expression )','expression',3,'p_expression_group','parser.py',73),
-  ('expression -> FLOAT','expression',1,'p_expression_number','parser.py',77),
-  ('expression -> INTEGER','expression',1,'p_expression_number','parser.py',78),
-  ('expression -> ID','expression',1,'p_expression_id','parser.py',82),
+  ('statement -> PRINT expression','statement',2,'p_print_expression','parser.py',14),
+  ('statement -> PRINT QUOTATION ID QUOTATION','statement',4,'p_print_string','parser.py',18),
+  ('statement -> IF expression','statement',2,'p_if','parser.py',22),
+  ('statement -> ID RECEIVE expression','statement',3,'p_statement_assign','parser.py',26),
+  ('statement -> ID RECEIVE QUOTATION ID QUOTATION NEWLINE','statement',6,'p_string','parser.py',30),
+  ('statement -> expression','statement',1,'p_statement_expr','parser.py',34),
+  ('statement -> LPAREN expression RPAREN','statement',3,'p_statement_paren','parser.py',38),
+  ('expression -> expression LT expression','expression',3,'p_boolean_expression','parser.py',42),
+  ('expression -> expression LE expression','expression',3,'p_boolean_expression','parser.py',43),
+  ('expression -> expression GT expression','expression',3,'p_boolean_expression','parser.py',44),
+  ('expression -> expression GE expression','expression',3,'p_boolean_expression','parser.py',45),
+  ('expression -> expression PLUS expression','expression',3,'p_expression_binop','parser.py',56),
+  ('expression -> expression MINUS expression','expression',3,'p_expression_binop','parser.py',57),
+  ('expression -> expression TIMES expression','expression',3,'p_expression_binop','parser.py',58),
+  ('expression -> expression DIVIDE expression','expression',3,'p_expression_binop','parser.py',59),
+  ('expression -> - expression','expression',2,'p_expression_uminus','parser.py',70),
+  ('expression -> ( expression )','expression',3,'p_expression_group','parser.py',74),
+  ('expression -> FLOAT','expression',1,'p_expression_number','parser.py',78),
+  ('expression -> INTEGER','expression',1,'p_expression_number','parser.py',79),
+  ('expression -> ID','expression',1,'p_expression_id','parser.py',83),
 ]

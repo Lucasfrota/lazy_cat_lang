@@ -23,11 +23,11 @@ def p_if(p):
     print p[2]
 
 def p_statement_assign(p):
-    'statement : ID RECEIVE expression NEWLINE'
+    'statement : ID RECEIVE expression'
     variables[p[1]] = p[3]
 
 def p_string(p):
-    'statement : ID RECEIVE QUOTATION ID QUOTATION NEWLINE'
+    'statement : ID RECEIVE QUOTATION ID QUOTATION'
     variables[p[1]] = p[4]
 
 def p_statement_expr(p):
