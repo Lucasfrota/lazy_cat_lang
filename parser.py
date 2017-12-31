@@ -99,11 +99,11 @@ def get_parser():
     return parser
 
 def open_file(file_name):
-    if file_name[-5:] == ".lazy":
+    if file_name[-3:] == ".lc":
         data = open(file_name, "r").read()
         return data
     else:
-        print "the file extension is incorrect, it should be .lazy"
+        print "the file extension is incorrect, it should be .lc"
         return None
 
 if __name__ == '__main__':
