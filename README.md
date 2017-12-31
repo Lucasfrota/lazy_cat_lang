@@ -10,6 +10,15 @@ Currently there are two main ways to use lady cat, you may run a script that use
 lazy_cat hello_world.lc
 ```
 
+## Basics
+
+Lazy cat is a weak typed language so if you want to create a variable it is only required that you say its name and then its value like this:
+
+```
+a = 10
+b = "abc"
+```
+
 ## current features
 
 * arithmetic calculations with integers
