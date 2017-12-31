@@ -5,6 +5,7 @@ Unused terminals:
     RETURN
     TRUE
     NONE
+    NEWLINE
     FOR
     SQUARED
     ELSE
@@ -20,7 +21,7 @@ Rule 1     statement -> PRINT expression
 Rule 2     statement -> PRINT QUOTATION ID QUOTATION
 Rule 3     statement -> IF expression
 Rule 4     statement -> ID RECEIVE expression
-Rule 5     statement -> ID RECEIVE QUOTATION ID QUOTATION NEWLINE
+Rule 5     statement -> ID RECEIVE QUOTATION ID QUOTATION
 Rule 6     statement -> expression
 Rule 7     statement -> LPAREN expression RPAREN
 Rule 8     expression -> expression LT expression
@@ -57,7 +58,7 @@ LE                   : 9
 LPAREN               : 7
 LT                   : 8
 MINUS                : 13
-NEWLINE              : 5
+NEWLINE              : 
 NONE                 : 
 NOT                  : 
 OR                   : 
@@ -86,7 +87,7 @@ state 0
     (2) statement -> . PRINT QUOTATION ID QUOTATION
     (3) statement -> . IF expression
     (4) statement -> . ID RECEIVE expression
-    (5) statement -> . ID RECEIVE QUOTATION ID QUOTATION NEWLINE
+    (5) statement -> . ID RECEIVE QUOTATION ID QUOTATION
     (6) statement -> . expression
     (7) statement -> . LPAREN expression RPAREN
     (8) expression -> . expression LT expression
@@ -243,7 +244,7 @@ state 6
 state 7
 
     (4) statement -> ID . RECEIVE expression
-    (5) statement -> ID . RECEIVE QUOTATION ID QUOTATION NEWLINE
+    (5) statement -> ID . RECEIVE QUOTATION ID QUOTATION
     (20) expression -> ID .
 
     RECEIVE         shift and go to state 17
@@ -453,7 +454,7 @@ state 16
 state 17
 
     (4) statement -> ID RECEIVE . expression
-    (5) statement -> ID RECEIVE . QUOTATION ID QUOTATION NEWLINE
+    (5) statement -> ID RECEIVE . QUOTATION ID QUOTATION
     (8) expression -> . expression LT expression
     (9) expression -> . expression LE expression
     (10) expression -> . expression GT expression
@@ -756,7 +757,7 @@ state 30
 
 state 31
 
-    (5) statement -> ID RECEIVE QUOTATION . ID QUOTATION NEWLINE
+    (5) statement -> ID RECEIVE QUOTATION . ID QUOTATION
 
     ID              shift and go to state 41
 
@@ -1074,23 +1075,16 @@ state 40
 
 state 41
 
-    (5) statement -> ID RECEIVE QUOTATION ID . QUOTATION NEWLINE
+    (5) statement -> ID RECEIVE QUOTATION ID . QUOTATION
 
     QUOTATION       shift and go to state 42
 
 
 state 42
 
-    (5) statement -> ID RECEIVE QUOTATION ID QUOTATION . NEWLINE
+    (5) statement -> ID RECEIVE QUOTATION ID QUOTATION .
 
-    NEWLINE         shift and go to state 43
-
-
-state 43
-
-    (5) statement -> ID RECEIVE QUOTATION ID QUOTATION NEWLINE .
-
-    $end            reduce using rule 5 (statement -> ID RECEIVE QUOTATION ID QUOTATION NEWLINE .)
+    $end            reduce using rule 5 (statement -> ID RECEIVE QUOTATION ID QUOTATION .)
 
 WARNING: 
 WARNING: Conflicts:
