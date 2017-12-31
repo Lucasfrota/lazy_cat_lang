@@ -2,6 +2,8 @@ from sys import *
 import ply.yacc as yacc
 from lex import tokens
 
+parser = None
+
 precedence = (
     ('left', 'PLUS', 'MINUS'),
     ('left', 'TIMES', 'DIVIDE'),
@@ -9,6 +11,32 @@ precedence = (
 )
 
 variables = {}
+current_line = 0
+code_lines = []
+
+
+
+def p_for_expression(p):
+    'statement : FOR expression TO expression COLON'
+
+    commands_in_loop = []
+
+    line_counter = current_line + 1
+    is_in_loop = True
+    while is_in_loop:
+        if code_lines[line_counter] == 'end\n':
+            is_in_loop = False
+        else:
+            commands_in_loop.append(code_lines[line_counter])
+            line_counter += 1
+
+    for i in range(p[2], p[4]):
+        for j in commands_in_loop:
+            parser.parse(j)
+
+def p_end(p):
+    'statement : END'
+    pass
 
 def p_print_expression(p):
     'statement : PRINT expression'
@@ -105,11 +133,14 @@ def open_file(file_name):
 
 if __name__ == '__main__':
 
+    code_lines = open_file(argv[1])
+    if code_lines is not None:
+        for line in code_lines:
+            parser.parse(line)
+            current_line += 1
+'''
     try:
-        code_lines = open_file(argv[1])
-        if code_lines is not None:
-            for line in code_lines:
-                parser.parse(line)
+
     except:
 
         while True:
@@ -120,3 +151,4 @@ if __name__ == '__main__':
            if not s:
                continue
            parser.parse(s)
+'''

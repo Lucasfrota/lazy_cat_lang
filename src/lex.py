@@ -15,6 +15,7 @@ tokens = [
    'QUOTATION',
    'RECEIVE',
    'NEWLINE',
+   'COLON',
 ]
 
 boolean_operators = [
@@ -28,6 +29,7 @@ reserved = {
    'print' : 'PRINT',
    'if' : 'IF',
    'for' : 'FOR',
+   'to' : 'TO',
    'else' : 'ELSE',
    'true' : 'TRUE',
    'false' : 'FALSE',
@@ -36,6 +38,7 @@ reserved = {
    'and' : 'AND',
    'not' : 'NOT',
    'return' : 'RETURN',
+   'end' : 'END',
 }
 
 literals = [ '{', '}']
@@ -50,7 +53,8 @@ t_LPAREN    = r'\('
 t_RPAREN    = r'\)'
 t_QUOTATION = r'\"'
 t_RECEIVE   = r'\='
-t_STRING = r'\".*?\"'
+t_STRING    = r'\".*?\"'
+t_COLON     = r':'
 
 t_LT        = r'<'
 t_LE        = r'<='
