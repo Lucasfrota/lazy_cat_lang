@@ -4,7 +4,11 @@ Lazy cat is a programming language that aims to be so simple that any programmer
 
 # how to use
 
-CuCurrently there are two main ways to use lady cat, you may run a script that uses the extension .lc by using the command
+Currently there are two main ways to use lady cat, you may run a script that uses the extension .lc by using the command
+
+```
+lazy_cat hello_world.lc
+```
 
 ## current features
 
