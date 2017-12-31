@@ -3,6 +3,7 @@ import ply.yacc as yacc
 from lex import tokens
 
 parser = None
+null_lines_list = []
 
 precedence = (
     ('left', 'PLUS', 'MINUS'),
@@ -20,7 +21,6 @@ def p_for_expression(p):
     commands_in_loop = []
 
     line_counter = current_line + 1
-    is_in_loop = True
     while code_lines[line_counter] != 'end\n':
         commands_in_loop.append(code_lines[line_counter])
         line_counter += 1
@@ -44,7 +44,6 @@ def p_for_in_expression(p):
         commands_in_loop = []
 
         line_counter = current_line + 1
-        is_in_loop = True
         while code_lines[line_counter] != 'end\n':
             commands_in_loop.append(code_lines[line_counter])
             line_counter += 1
@@ -77,8 +76,14 @@ def p_print_string(p):
     print p[2][1:-1]
 
 def p_if(p):
-    'statement : IF expression '
-    print p[2]
+    'statement : IF expression COLON'
+    commands_in_loop = []
+
+    if p[2] == False:
+        line_counter = current_line + 1
+        while code_lines[line_counter] != 'end\n':
+            null_lines_list.append(line_counter)
+            line_counter += 1
 
 def p_statement_assign(p):
     'statement : ID RECEIVE expression'
@@ -166,7 +171,8 @@ if __name__ == '__main__':
     code_lines = open_file(argv[1])
     if code_lines is not None:
         for line in code_lines:
-            parser.parse(line)
+            if not (current_line in null_lines_list):
+                parser.parse(line)
             current_line += 1
 '''
     try:
