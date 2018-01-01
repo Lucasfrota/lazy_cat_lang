@@ -21,7 +21,7 @@ def p_fun_expression(p):
     print "we got a function!"
 
 def p_procedure_expression(p):
-    'statement : FUN ID LPAREN RPAREN COLON'
+    'statement : FUN ID COLON'
 
     commands_in_procedure = []
 
