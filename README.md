@@ -68,7 +68,7 @@ in if statement we also use 'end' token to represent the end of the statement
 
 * Procedures
 
-Procedures are functions without parameters
+Procedures are functions without parameters, to create a procedure you just have to use the token 'fun' and define a name to your procedure, then you just need to define what your procedure does. to mark the end of the procedure you have to use the 'end' token
 
 ```
 fun f:
@@ -78,7 +78,11 @@ end
 fun f2():
   print "hi world!"
 end
+```
 
+to call the procedure just put its name and parentheses like this:
+
+```
 f2()
 f()
 ```
