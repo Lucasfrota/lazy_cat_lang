@@ -12,7 +12,7 @@ lazy_cat hello_world.lc
 
 ## Basics
 
-* variables
+### variables
 
 Lazy cat is a weak typed language so if you want to create a variable it is only required that you say its name and then its value like this:
 
@@ -20,7 +20,7 @@ Lazy cat is a weak typed language so if you want to create a variable it is only
 a = 10
 b = "abc"
 ```
-* print
+### print
 
 To show the variables content just print it!
 
@@ -29,7 +29,7 @@ print a
 print b
 ```
 
-* loops
+### loops
 
 For now there are only two types of loop, the iterative one and the not iterativo.
 
@@ -53,7 +53,7 @@ end
 
 In this example the string "hello world" will be printed 5 times
 
-* If
+### If
 
 the if statement is pretty simple, you just have to write a boolean expression after the 'if', if it is true the lines of code inside the block will be executed, otherwise the program will jump to the end of the block
 
@@ -66,7 +66,7 @@ end
 
 in if statement we also use 'end' token to represent the end of the statement
 
-* Procedures
+### Procedures
 
 Procedures are functions without parameters, to create a procedure you just have to use the token 'fun' and define a name to your procedure, then you just need to define what your procedure does. to mark the end of the procedure you have to use the 'end' token
 
