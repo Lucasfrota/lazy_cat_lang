@@ -33,6 +33,17 @@ def p_procedure_expression(p):
 
     procedures.append([p[2], commands_in_procedure])
 
+def p_call_procedure(p):
+    'expression : ID LPAREN RPAREN'
+    there_is_procedure = False
+    for i in procedures:
+        if p[1] == i[0]:
+            there_is_procedure = True
+            for j in i[1]:
+                parser.parse(j)
+    if not there_is_procedure:
+        print "there is no procedure called '" + p[1] + "'"
+
 def p_declaration_list_1(t):
     'declaration_list : expression'
     pass
@@ -174,20 +185,11 @@ def p_expression_comma(p):
 def p_expression_id(p):
     "expression : ID"
 
-    there_is_procedure = False
-
-    for i in procedures:
-        if p[1] == i[0]:
-            there_is_procedure = True
-            for j in i[1]:
-                parser.parse(j)
-
-    if not there_is_procedure:
-        try:
-            p[0] = variables[p[1]]
-        except LookupError:
-            print("Undefined variable '%s'" % p[1])
-            p[0] = 0
+    try:
+        p[0] = variables[p[1]]
+    except LookupError:
+        print("Undefined variable '%s'" % p[1])
+        p[0] = 0
 
 def p_error(p):
     if p:

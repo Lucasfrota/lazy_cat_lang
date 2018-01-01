@@ -19,79 +19,80 @@ Grammar
 Rule 0     S' -> statement
 Rule 1     statement -> FUN ID LPAREN declaration_list RPAREN COLON
 Rule 2     statement -> FUN ID COLON
-Rule 3     declaration_list -> expression
-Rule 4     declaration_list -> declaration_list expression
-Rule 5     statement -> FOR expression TO expression COLON
-Rule 6     statement -> FOR ID IN expression TO expression COLON
-Rule 7     statement -> END
-Rule 8     statement -> PRINT expression
-Rule 9     statement -> PRINT STRING
-Rule 10    statement -> IF expression COLON
-Rule 11    statement -> ID RECEIVE expression
-Rule 12    statement -> ID RECEIVE STRING
-Rule 13    statement -> expression
-Rule 14    statement -> LPAREN expression RPAREN
-Rule 15    expression -> expression LT expression
-Rule 16    expression -> expression LE expression
-Rule 17    expression -> expression GT expression
-Rule 18    expression -> expression GE expression
-Rule 19    expression -> expression PLUS expression
-Rule 20    expression -> expression MINUS expression
-Rule 21    expression -> expression TIMES expression
-Rule 22    expression -> expression DIVIDE expression
-Rule 23    expression -> - expression
-Rule 24    expression -> ( expression )
-Rule 25    expression -> FLOAT
-Rule 26    expression -> INTEGER
-Rule 27    expression -> expression COMMA
-Rule 28    expression -> ID
+Rule 3     expression -> ID LPAREN RPAREN
+Rule 4     declaration_list -> expression
+Rule 5     declaration_list -> declaration_list expression
+Rule 6     statement -> FOR expression TO expression COLON
+Rule 7     statement -> FOR ID IN expression TO expression COLON
+Rule 8     statement -> END
+Rule 9     statement -> PRINT expression
+Rule 10    statement -> PRINT STRING
+Rule 11    statement -> IF expression COLON
+Rule 12    statement -> ID RECEIVE expression
+Rule 13    statement -> ID RECEIVE STRING
+Rule 14    statement -> expression
+Rule 15    statement -> LPAREN expression RPAREN
+Rule 16    expression -> expression LT expression
+Rule 17    expression -> expression LE expression
+Rule 18    expression -> expression GT expression
+Rule 19    expression -> expression GE expression
+Rule 20    expression -> expression PLUS expression
+Rule 21    expression -> expression MINUS expression
+Rule 22    expression -> expression TIMES expression
+Rule 23    expression -> expression DIVIDE expression
+Rule 24    expression -> - expression
+Rule 25    expression -> ( expression )
+Rule 26    expression -> FLOAT
+Rule 27    expression -> INTEGER
+Rule 28    expression -> expression COMMA
+Rule 29    expression -> ID
 
 Terminals, with rules where they appear
 
-(                    : 24
-)                    : 24
--                    : 23
+(                    : 25
+)                    : 25
+-                    : 24
 AND                  : 
-COLON                : 1 2 5 6 10
-COMMA                : 27
-DIVIDE               : 22
+COLON                : 1 2 6 7 11
+COMMA                : 28
+DIVIDE               : 23
 ELSE                 : 
-END                  : 7
+END                  : 8
 FALSE                : 
-FLOAT                : 25
-FOR                  : 5 6
+FLOAT                : 26
+FOR                  : 6 7
 FUN                  : 1 2
-GE                   : 18
-GT                   : 17
-ID                   : 1 2 6 11 12 28
-IF                   : 10
-IN                   : 6
-INTEGER              : 26
-LE                   : 16
-LPAREN               : 1 14
-LT                   : 15
-MINUS                : 20
+GE                   : 19
+GT                   : 18
+ID                   : 1 2 3 7 12 13 29
+IF                   : 11
+IN                   : 7
+INTEGER              : 27
+LE                   : 17
+LPAREN               : 1 3 15
+LT                   : 16
+MINUS                : 21
 NEWLINE              : 
 NONE                 : 
 NOT                  : 
 OR                   : 
-PLUS                 : 19
-PRINT                : 8 9
+PLUS                 : 20
+PRINT                : 9 10
 QUOTATION            : 
-RECEIVE              : 11 12
+RECEIVE              : 12 13
 RETURN               : 
-RPAREN               : 1 14
+RPAREN               : 1 3 15
 SQUARED              : 
-STRING               : 9 12
-TIMES                : 21
-TO                   : 5 6
+STRING               : 10 13
+TIMES                : 22
+TO                   : 6 7
 TRUE                 : 
 error                : 
 
 Nonterminals, with rules where they appear
 
-declaration_list     : 1 4
-expression           : 3 4 5 5 6 6 8 10 11 13 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 24 27
+declaration_list     : 1 5
+expression           : 4 5 6 6 7 7 9 11 12 14 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 25 28
 statement            : 0
 
 Parsing method: LALR
@@ -101,30 +102,31 @@ state 0
     (0) S' -> . statement
     (1) statement -> . FUN ID LPAREN declaration_list RPAREN COLON
     (2) statement -> . FUN ID COLON
-    (5) statement -> . FOR expression TO expression COLON
-    (6) statement -> . FOR ID IN expression TO expression COLON
-    (7) statement -> . END
-    (8) statement -> . PRINT expression
-    (9) statement -> . PRINT STRING
-    (10) statement -> . IF expression COLON
-    (11) statement -> . ID RECEIVE expression
-    (12) statement -> . ID RECEIVE STRING
-    (13) statement -> . expression
-    (14) statement -> . LPAREN expression RPAREN
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (6) statement -> . FOR expression TO expression COLON
+    (7) statement -> . FOR ID IN expression TO expression COLON
+    (8) statement -> . END
+    (9) statement -> . PRINT expression
+    (10) statement -> . PRINT STRING
+    (11) statement -> . IF expression COLON
+    (12) statement -> . ID RECEIVE expression
+    (13) statement -> . ID RECEIVE STRING
+    (14) statement -> . expression
+    (15) statement -> . LPAREN expression RPAREN
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
     FUN             shift and go to state 1
     FOR             shift and go to state 7
@@ -151,81 +153,84 @@ state 1
 
 state 2
 
-    (8) statement -> PRINT . expression
-    (9) statement -> PRINT . STRING
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (9) statement -> PRINT . expression
+    (10) statement -> PRINT . STRING
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
     STRING          shift and go to state 15
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
-    expression                     shift and go to state 17
+    expression                     shift and go to state 16
 
 state 3
 
-    (24) expression -> ( . expression )
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (25) expression -> ( . expression )
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
     expression                     shift and go to state 18
 
 state 4
 
-    (23) expression -> - . expression
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (24) expression -> - . expression
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
     expression                     shift and go to state 19
 
@@ -237,182 +242,187 @@ state 5
 
 state 6
 
-    (7) statement -> END .
+    (8) statement -> END .
 
-    $end            reduce using rule 7 (statement -> END .)
+    $end            reduce using rule 8 (statement -> END .)
 
 
 state 7
 
-    (5) statement -> FOR . expression TO expression COLON
-    (6) statement -> FOR . ID IN expression TO expression COLON
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (6) statement -> FOR . expression TO expression COLON
+    (7) statement -> FOR . ID IN expression TO expression COLON
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
-    ID              shift and go to state 21
+    ID              shift and go to state 20
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
 
-    expression                     shift and go to state 20
+    expression                     shift and go to state 21
 
 state 8
 
-    (14) statement -> LPAREN . expression RPAREN
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (15) statement -> LPAREN . expression RPAREN
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
     expression                     shift and go to state 22
 
 state 9
 
-    (11) statement -> ID . RECEIVE expression
-    (12) statement -> ID . RECEIVE STRING
-    (28) expression -> ID .
+    (12) statement -> ID . RECEIVE expression
+    (13) statement -> ID . RECEIVE STRING
+    (3) expression -> ID . LPAREN RPAREN
+    (29) expression -> ID .
 
     RECEIVE         shift and go to state 23
-    LT              reduce using rule 28 (expression -> ID .)
-    LE              reduce using rule 28 (expression -> ID .)
-    GT              reduce using rule 28 (expression -> ID .)
-    GE              reduce using rule 28 (expression -> ID .)
-    PLUS            reduce using rule 28 (expression -> ID .)
-    MINUS           reduce using rule 28 (expression -> ID .)
-    TIMES           reduce using rule 28 (expression -> ID .)
-    DIVIDE          reduce using rule 28 (expression -> ID .)
-    COMMA           reduce using rule 28 (expression -> ID .)
-    $end            reduce using rule 28 (expression -> ID .)
+    LPAREN          shift and go to state 24
+    LT              reduce using rule 29 (expression -> ID .)
+    LE              reduce using rule 29 (expression -> ID .)
+    GT              reduce using rule 29 (expression -> ID .)
+    GE              reduce using rule 29 (expression -> ID .)
+    PLUS            reduce using rule 29 (expression -> ID .)
+    MINUS           reduce using rule 29 (expression -> ID .)
+    TIMES           reduce using rule 29 (expression -> ID .)
+    DIVIDE          reduce using rule 29 (expression -> ID .)
+    COMMA           reduce using rule 29 (expression -> ID .)
+    $end            reduce using rule 29 (expression -> ID .)
 
 
 state 10
 
-    (10) statement -> IF . expression COLON
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (11) statement -> IF . expression COLON
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
-    expression                     shift and go to state 24
+    expression                     shift and go to state 25
 
 state 11
 
-    (26) expression -> INTEGER .
+    (27) expression -> INTEGER .
 
-    LT              reduce using rule 26 (expression -> INTEGER .)
-    LE              reduce using rule 26 (expression -> INTEGER .)
-    GT              reduce using rule 26 (expression -> INTEGER .)
-    GE              reduce using rule 26 (expression -> INTEGER .)
-    PLUS            reduce using rule 26 (expression -> INTEGER .)
-    MINUS           reduce using rule 26 (expression -> INTEGER .)
-    TIMES           reduce using rule 26 (expression -> INTEGER .)
-    DIVIDE          reduce using rule 26 (expression -> INTEGER .)
-    COMMA           reduce using rule 26 (expression -> INTEGER .)
-    $end            reduce using rule 26 (expression -> INTEGER .)
-    )               reduce using rule 26 (expression -> INTEGER .)
-    TO              reduce using rule 26 (expression -> INTEGER .)
-    RPAREN          reduce using rule 26 (expression -> INTEGER .)
-    COLON           reduce using rule 26 (expression -> INTEGER .)
-    -               reduce using rule 26 (expression -> INTEGER .)
-    (               reduce using rule 26 (expression -> INTEGER .)
-    FLOAT           reduce using rule 26 (expression -> INTEGER .)
-    INTEGER         reduce using rule 26 (expression -> INTEGER .)
-    ID              reduce using rule 26 (expression -> INTEGER .)
+    LT              reduce using rule 27 (expression -> INTEGER .)
+    LE              reduce using rule 27 (expression -> INTEGER .)
+    GT              reduce using rule 27 (expression -> INTEGER .)
+    GE              reduce using rule 27 (expression -> INTEGER .)
+    PLUS            reduce using rule 27 (expression -> INTEGER .)
+    MINUS           reduce using rule 27 (expression -> INTEGER .)
+    TIMES           reduce using rule 27 (expression -> INTEGER .)
+    DIVIDE          reduce using rule 27 (expression -> INTEGER .)
+    COMMA           reduce using rule 27 (expression -> INTEGER .)
+    $end            reduce using rule 27 (expression -> INTEGER .)
+    )               reduce using rule 27 (expression -> INTEGER .)
+    TO              reduce using rule 27 (expression -> INTEGER .)
+    RPAREN          reduce using rule 27 (expression -> INTEGER .)
+    COLON           reduce using rule 27 (expression -> INTEGER .)
+    ID              reduce using rule 27 (expression -> INTEGER .)
+    -               reduce using rule 27 (expression -> INTEGER .)
+    (               reduce using rule 27 (expression -> INTEGER .)
+    FLOAT           reduce using rule 27 (expression -> INTEGER .)
+    INTEGER         reduce using rule 27 (expression -> INTEGER .)
 
 
 state 12
 
-    (25) expression -> FLOAT .
+    (26) expression -> FLOAT .
 
-    LT              reduce using rule 25 (expression -> FLOAT .)
-    LE              reduce using rule 25 (expression -> FLOAT .)
-    GT              reduce using rule 25 (expression -> FLOAT .)
-    GE              reduce using rule 25 (expression -> FLOAT .)
-    PLUS            reduce using rule 25 (expression -> FLOAT .)
-    MINUS           reduce using rule 25 (expression -> FLOAT .)
-    TIMES           reduce using rule 25 (expression -> FLOAT .)
-    DIVIDE          reduce using rule 25 (expression -> FLOAT .)
-    COMMA           reduce using rule 25 (expression -> FLOAT .)
-    $end            reduce using rule 25 (expression -> FLOAT .)
-    )               reduce using rule 25 (expression -> FLOAT .)
-    TO              reduce using rule 25 (expression -> FLOAT .)
-    RPAREN          reduce using rule 25 (expression -> FLOAT .)
-    COLON           reduce using rule 25 (expression -> FLOAT .)
-    -               reduce using rule 25 (expression -> FLOAT .)
-    (               reduce using rule 25 (expression -> FLOAT .)
-    FLOAT           reduce using rule 25 (expression -> FLOAT .)
-    INTEGER         reduce using rule 25 (expression -> FLOAT .)
-    ID              reduce using rule 25 (expression -> FLOAT .)
+    LT              reduce using rule 26 (expression -> FLOAT .)
+    LE              reduce using rule 26 (expression -> FLOAT .)
+    GT              reduce using rule 26 (expression -> FLOAT .)
+    GE              reduce using rule 26 (expression -> FLOAT .)
+    PLUS            reduce using rule 26 (expression -> FLOAT .)
+    MINUS           reduce using rule 26 (expression -> FLOAT .)
+    TIMES           reduce using rule 26 (expression -> FLOAT .)
+    DIVIDE          reduce using rule 26 (expression -> FLOAT .)
+    COMMA           reduce using rule 26 (expression -> FLOAT .)
+    $end            reduce using rule 26 (expression -> FLOAT .)
+    )               reduce using rule 26 (expression -> FLOAT .)
+    TO              reduce using rule 26 (expression -> FLOAT .)
+    RPAREN          reduce using rule 26 (expression -> FLOAT .)
+    COLON           reduce using rule 26 (expression -> FLOAT .)
+    ID              reduce using rule 26 (expression -> FLOAT .)
+    -               reduce using rule 26 (expression -> FLOAT .)
+    (               reduce using rule 26 (expression -> FLOAT .)
+    FLOAT           reduce using rule 26 (expression -> FLOAT .)
+    INTEGER         reduce using rule 26 (expression -> FLOAT .)
 
 
 state 13
 
-    (13) statement -> expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (14) statement -> expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    $end            reduce using rule 13 (statement -> expression .)
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
+    $end            reduce using rule 14 (statement -> expression .)
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
 
 
 state 14
@@ -420,758 +430,709 @@ state 14
     (1) statement -> FUN ID . LPAREN declaration_list RPAREN COLON
     (2) statement -> FUN ID . COLON
 
-    LPAREN          shift and go to state 35
-    COLON           shift and go to state 34
+    LPAREN          shift and go to state 36
+    COLON           shift and go to state 35
 
 
 state 15
 
-    (9) statement -> PRINT STRING .
+    (10) statement -> PRINT STRING .
 
-    $end            reduce using rule 9 (statement -> PRINT STRING .)
+    $end            reduce using rule 10 (statement -> PRINT STRING .)
 
 
 state 16
 
-    (28) expression -> ID .
+    (9) statement -> PRINT expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    LT              reduce using rule 28 (expression -> ID .)
-    LE              reduce using rule 28 (expression -> ID .)
-    GT              reduce using rule 28 (expression -> ID .)
-    GE              reduce using rule 28 (expression -> ID .)
-    PLUS            reduce using rule 28 (expression -> ID .)
-    MINUS           reduce using rule 28 (expression -> ID .)
-    TIMES           reduce using rule 28 (expression -> ID .)
-    DIVIDE          reduce using rule 28 (expression -> ID .)
-    COMMA           reduce using rule 28 (expression -> ID .)
-    $end            reduce using rule 28 (expression -> ID .)
-    )               reduce using rule 28 (expression -> ID .)
-    TO              reduce using rule 28 (expression -> ID .)
-    RPAREN          reduce using rule 28 (expression -> ID .)
-    COLON           reduce using rule 28 (expression -> ID .)
-    -               reduce using rule 28 (expression -> ID .)
-    (               reduce using rule 28 (expression -> ID .)
-    FLOAT           reduce using rule 28 (expression -> ID .)
-    INTEGER         reduce using rule 28 (expression -> ID .)
-    ID              reduce using rule 28 (expression -> ID .)
+    $end            reduce using rule 9 (statement -> PRINT expression .)
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
 
 
 state 17
 
-    (8) statement -> PRINT expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (3) expression -> ID . LPAREN RPAREN
+    (29) expression -> ID .
 
-    $end            reduce using rule 8 (statement -> PRINT expression .)
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
+    LPAREN          shift and go to state 24
+    LT              reduce using rule 29 (expression -> ID .)
+    LE              reduce using rule 29 (expression -> ID .)
+    GT              reduce using rule 29 (expression -> ID .)
+    GE              reduce using rule 29 (expression -> ID .)
+    PLUS            reduce using rule 29 (expression -> ID .)
+    MINUS           reduce using rule 29 (expression -> ID .)
+    TIMES           reduce using rule 29 (expression -> ID .)
+    DIVIDE          reduce using rule 29 (expression -> ID .)
+    COMMA           reduce using rule 29 (expression -> ID .)
+    $end            reduce using rule 29 (expression -> ID .)
+    )               reduce using rule 29 (expression -> ID .)
+    TO              reduce using rule 29 (expression -> ID .)
+    RPAREN          reduce using rule 29 (expression -> ID .)
+    COLON           reduce using rule 29 (expression -> ID .)
+    ID              reduce using rule 29 (expression -> ID .)
+    -               reduce using rule 29 (expression -> ID .)
+    (               reduce using rule 29 (expression -> ID .)
+    FLOAT           reduce using rule 29 (expression -> ID .)
+    INTEGER         reduce using rule 29 (expression -> ID .)
 
 
 state 18
 
-    (24) expression -> ( expression . )
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (25) expression -> ( expression . )
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    )               shift and go to state 36
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
+    )               shift and go to state 37
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
 
 
 state 19
 
-    (23) expression -> - expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (24) expression -> - expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    LT              reduce using rule 23 (expression -> - expression .)
-    LE              reduce using rule 23 (expression -> - expression .)
-    GT              reduce using rule 23 (expression -> - expression .)
-    GE              reduce using rule 23 (expression -> - expression .)
-    PLUS            reduce using rule 23 (expression -> - expression .)
-    MINUS           reduce using rule 23 (expression -> - expression .)
-    TIMES           reduce using rule 23 (expression -> - expression .)
-    DIVIDE          reduce using rule 23 (expression -> - expression .)
-    COMMA           reduce using rule 23 (expression -> - expression .)
-    $end            reduce using rule 23 (expression -> - expression .)
-    )               reduce using rule 23 (expression -> - expression .)
-    TO              reduce using rule 23 (expression -> - expression .)
-    RPAREN          reduce using rule 23 (expression -> - expression .)
-    COLON           reduce using rule 23 (expression -> - expression .)
-    -               reduce using rule 23 (expression -> - expression .)
-    (               reduce using rule 23 (expression -> - expression .)
-    FLOAT           reduce using rule 23 (expression -> - expression .)
-    INTEGER         reduce using rule 23 (expression -> - expression .)
-    ID              reduce using rule 23 (expression -> - expression .)
+    LT              reduce using rule 24 (expression -> - expression .)
+    LE              reduce using rule 24 (expression -> - expression .)
+    GT              reduce using rule 24 (expression -> - expression .)
+    GE              reduce using rule 24 (expression -> - expression .)
+    PLUS            reduce using rule 24 (expression -> - expression .)
+    MINUS           reduce using rule 24 (expression -> - expression .)
+    TIMES           reduce using rule 24 (expression -> - expression .)
+    DIVIDE          reduce using rule 24 (expression -> - expression .)
+    COMMA           reduce using rule 24 (expression -> - expression .)
+    $end            reduce using rule 24 (expression -> - expression .)
+    )               reduce using rule 24 (expression -> - expression .)
+    TO              reduce using rule 24 (expression -> - expression .)
+    RPAREN          reduce using rule 24 (expression -> - expression .)
+    COLON           reduce using rule 24 (expression -> - expression .)
+    ID              reduce using rule 24 (expression -> - expression .)
+    -               reduce using rule 24 (expression -> - expression .)
+    (               reduce using rule 24 (expression -> - expression .)
+    FLOAT           reduce using rule 24 (expression -> - expression .)
+    INTEGER         reduce using rule 24 (expression -> - expression .)
 
-  ! LT              [ shift and go to state 29 ]
-  ! LE              [ shift and go to state 25 ]
-  ! GT              [ shift and go to state 30 ]
-  ! GE              [ shift and go to state 27 ]
-  ! PLUS            [ shift and go to state 31 ]
-  ! MINUS           [ shift and go to state 33 ]
-  ! TIMES           [ shift and go to state 28 ]
-  ! DIVIDE          [ shift and go to state 26 ]
-  ! COMMA           [ shift and go to state 32 ]
+  ! LT              [ shift and go to state 30 ]
+  ! LE              [ shift and go to state 26 ]
+  ! GT              [ shift and go to state 31 ]
+  ! GE              [ shift and go to state 28 ]
+  ! PLUS            [ shift and go to state 32 ]
+  ! MINUS           [ shift and go to state 34 ]
+  ! TIMES           [ shift and go to state 29 ]
+  ! DIVIDE          [ shift and go to state 27 ]
+  ! COMMA           [ shift and go to state 33 ]
 
 
 state 20
 
-    (5) statement -> FOR expression . TO expression COLON
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (7) statement -> FOR ID . IN expression TO expression COLON
+    (3) expression -> ID . LPAREN RPAREN
+    (29) expression -> ID .
 
-    TO              shift and go to state 37
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
+    IN              shift and go to state 38
+    LPAREN          shift and go to state 24
+    TO              reduce using rule 29 (expression -> ID .)
+    LT              reduce using rule 29 (expression -> ID .)
+    LE              reduce using rule 29 (expression -> ID .)
+    GT              reduce using rule 29 (expression -> ID .)
+    GE              reduce using rule 29 (expression -> ID .)
+    PLUS            reduce using rule 29 (expression -> ID .)
+    MINUS           reduce using rule 29 (expression -> ID .)
+    TIMES           reduce using rule 29 (expression -> ID .)
+    DIVIDE          reduce using rule 29 (expression -> ID .)
+    COMMA           reduce using rule 29 (expression -> ID .)
 
 
 state 21
 
-    (6) statement -> FOR ID . IN expression TO expression COLON
-    (28) expression -> ID .
+    (6) statement -> FOR expression . TO expression COLON
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    IN              shift and go to state 38
-    TO              reduce using rule 28 (expression -> ID .)
-    LT              reduce using rule 28 (expression -> ID .)
-    LE              reduce using rule 28 (expression -> ID .)
-    GT              reduce using rule 28 (expression -> ID .)
-    GE              reduce using rule 28 (expression -> ID .)
-    PLUS            reduce using rule 28 (expression -> ID .)
-    MINUS           reduce using rule 28 (expression -> ID .)
-    TIMES           reduce using rule 28 (expression -> ID .)
-    DIVIDE          reduce using rule 28 (expression -> ID .)
-    COMMA           reduce using rule 28 (expression -> ID .)
+    TO              shift and go to state 39
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
 
 
 state 22
 
-    (14) statement -> LPAREN expression . RPAREN
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (15) statement -> LPAREN expression . RPAREN
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    RPAREN          shift and go to state 39
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
+    RPAREN          shift and go to state 40
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
 
 
 state 23
 
-    (11) statement -> ID RECEIVE . expression
-    (12) statement -> ID RECEIVE . STRING
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (12) statement -> ID RECEIVE . expression
+    (13) statement -> ID RECEIVE . STRING
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
-    STRING          shift and go to state 40
+    STRING          shift and go to state 41
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
-    expression                     shift and go to state 41
+    expression                     shift and go to state 42
 
 state 24
 
-    (10) statement -> IF expression . COLON
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (3) expression -> ID LPAREN . RPAREN
 
-    COLON           shift and go to state 42
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
+    RPAREN          shift and go to state 43
 
 
 state 25
 
-    (16) expression -> expression LE . expression
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (11) statement -> IF expression . COLON
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    -               shift and go to state 4
-    (               shift and go to state 3
-    FLOAT           shift and go to state 12
-    INTEGER         shift and go to state 11
-    ID              shift and go to state 16
+    COLON           shift and go to state 44
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
 
-    expression                     shift and go to state 43
 
 state 26
 
-    (22) expression -> expression DIVIDE . expression
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (17) expression -> expression LE . expression
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
-
-    expression                     shift and go to state 44
-
-state 27
-
-    (18) expression -> expression GE . expression
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
-
-    -               shift and go to state 4
-    (               shift and go to state 3
-    FLOAT           shift and go to state 12
-    INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
     expression                     shift and go to state 45
 
-state 28
+state 27
 
-    (21) expression -> expression TIMES . expression
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (23) expression -> expression DIVIDE . expression
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
     expression                     shift and go to state 46
 
-state 29
+state 28
 
-    (15) expression -> expression LT . expression
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (19) expression -> expression GE . expression
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
     expression                     shift and go to state 47
 
-state 30
+state 29
 
-    (17) expression -> expression GT . expression
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (22) expression -> expression TIMES . expression
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
     expression                     shift and go to state 48
 
-state 31
+state 30
 
-    (19) expression -> expression PLUS . expression
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (16) expression -> expression LT . expression
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
     expression                     shift and go to state 49
 
-state 32
+state 31
 
-    (27) expression -> expression COMMA .
+    (18) expression -> expression GT . expression
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
-    LT              reduce using rule 27 (expression -> expression COMMA .)
-    LE              reduce using rule 27 (expression -> expression COMMA .)
-    GT              reduce using rule 27 (expression -> expression COMMA .)
-    GE              reduce using rule 27 (expression -> expression COMMA .)
-    PLUS            reduce using rule 27 (expression -> expression COMMA .)
-    MINUS           reduce using rule 27 (expression -> expression COMMA .)
-    TIMES           reduce using rule 27 (expression -> expression COMMA .)
-    DIVIDE          reduce using rule 27 (expression -> expression COMMA .)
-    COMMA           reduce using rule 27 (expression -> expression COMMA .)
-    $end            reduce using rule 27 (expression -> expression COMMA .)
-    )               reduce using rule 27 (expression -> expression COMMA .)
-    TO              reduce using rule 27 (expression -> expression COMMA .)
-    RPAREN          reduce using rule 27 (expression -> expression COMMA .)
-    COLON           reduce using rule 27 (expression -> expression COMMA .)
-    -               reduce using rule 27 (expression -> expression COMMA .)
-    (               reduce using rule 27 (expression -> expression COMMA .)
-    FLOAT           reduce using rule 27 (expression -> expression COMMA .)
-    INTEGER         reduce using rule 27 (expression -> expression COMMA .)
-    ID              reduce using rule 27 (expression -> expression COMMA .)
-
-
-state 33
-
-    (20) expression -> expression MINUS . expression
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
-
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
     expression                     shift and go to state 50
 
+state 32
+
+    (20) expression -> expression PLUS . expression
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
+
+    ID              shift and go to state 17
+    -               shift and go to state 4
+    (               shift and go to state 3
+    FLOAT           shift and go to state 12
+    INTEGER         shift and go to state 11
+
+    expression                     shift and go to state 51
+
+state 33
+
+    (28) expression -> expression COMMA .
+
+    LT              reduce using rule 28 (expression -> expression COMMA .)
+    LE              reduce using rule 28 (expression -> expression COMMA .)
+    GT              reduce using rule 28 (expression -> expression COMMA .)
+    GE              reduce using rule 28 (expression -> expression COMMA .)
+    PLUS            reduce using rule 28 (expression -> expression COMMA .)
+    MINUS           reduce using rule 28 (expression -> expression COMMA .)
+    TIMES           reduce using rule 28 (expression -> expression COMMA .)
+    DIVIDE          reduce using rule 28 (expression -> expression COMMA .)
+    COMMA           reduce using rule 28 (expression -> expression COMMA .)
+    $end            reduce using rule 28 (expression -> expression COMMA .)
+    )               reduce using rule 28 (expression -> expression COMMA .)
+    TO              reduce using rule 28 (expression -> expression COMMA .)
+    RPAREN          reduce using rule 28 (expression -> expression COMMA .)
+    COLON           reduce using rule 28 (expression -> expression COMMA .)
+    ID              reduce using rule 28 (expression -> expression COMMA .)
+    -               reduce using rule 28 (expression -> expression COMMA .)
+    (               reduce using rule 28 (expression -> expression COMMA .)
+    FLOAT           reduce using rule 28 (expression -> expression COMMA .)
+    INTEGER         reduce using rule 28 (expression -> expression COMMA .)
+
+
 state 34
+
+    (21) expression -> expression MINUS . expression
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
+
+    ID              shift and go to state 17
+    -               shift and go to state 4
+    (               shift and go to state 3
+    FLOAT           shift and go to state 12
+    INTEGER         shift and go to state 11
+
+    expression                     shift and go to state 52
+
+state 35
 
     (2) statement -> FUN ID COLON .
 
     $end            reduce using rule 2 (statement -> FUN ID COLON .)
 
 
-state 35
+state 36
 
     (1) statement -> FUN ID LPAREN . declaration_list RPAREN COLON
-    (3) declaration_list -> . expression
-    (4) declaration_list -> . declaration_list expression
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (4) declaration_list -> . expression
+    (5) declaration_list -> . declaration_list expression
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
-    expression                     shift and go to state 52
-    declaration_list               shift and go to state 51
-
-state 36
-
-    (24) expression -> ( expression ) .
-
-    LT              reduce using rule 24 (expression -> ( expression ) .)
-    LE              reduce using rule 24 (expression -> ( expression ) .)
-    GT              reduce using rule 24 (expression -> ( expression ) .)
-    GE              reduce using rule 24 (expression -> ( expression ) .)
-    PLUS            reduce using rule 24 (expression -> ( expression ) .)
-    MINUS           reduce using rule 24 (expression -> ( expression ) .)
-    TIMES           reduce using rule 24 (expression -> ( expression ) .)
-    DIVIDE          reduce using rule 24 (expression -> ( expression ) .)
-    COMMA           reduce using rule 24 (expression -> ( expression ) .)
-    $end            reduce using rule 24 (expression -> ( expression ) .)
-    )               reduce using rule 24 (expression -> ( expression ) .)
-    TO              reduce using rule 24 (expression -> ( expression ) .)
-    RPAREN          reduce using rule 24 (expression -> ( expression ) .)
-    COLON           reduce using rule 24 (expression -> ( expression ) .)
-    -               reduce using rule 24 (expression -> ( expression ) .)
-    (               reduce using rule 24 (expression -> ( expression ) .)
-    FLOAT           reduce using rule 24 (expression -> ( expression ) .)
-    INTEGER         reduce using rule 24 (expression -> ( expression ) .)
-    ID              reduce using rule 24 (expression -> ( expression ) .)
-
+    expression                     shift and go to state 54
+    declaration_list               shift and go to state 53
 
 state 37
 
-    (5) statement -> FOR expression TO . expression COLON
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (25) expression -> ( expression ) .
 
-    -               shift and go to state 4
-    (               shift and go to state 3
-    FLOAT           shift and go to state 12
-    INTEGER         shift and go to state 11
-    ID              shift and go to state 16
+    LT              reduce using rule 25 (expression -> ( expression ) .)
+    LE              reduce using rule 25 (expression -> ( expression ) .)
+    GT              reduce using rule 25 (expression -> ( expression ) .)
+    GE              reduce using rule 25 (expression -> ( expression ) .)
+    PLUS            reduce using rule 25 (expression -> ( expression ) .)
+    MINUS           reduce using rule 25 (expression -> ( expression ) .)
+    TIMES           reduce using rule 25 (expression -> ( expression ) .)
+    DIVIDE          reduce using rule 25 (expression -> ( expression ) .)
+    COMMA           reduce using rule 25 (expression -> ( expression ) .)
+    $end            reduce using rule 25 (expression -> ( expression ) .)
+    )               reduce using rule 25 (expression -> ( expression ) .)
+    TO              reduce using rule 25 (expression -> ( expression ) .)
+    RPAREN          reduce using rule 25 (expression -> ( expression ) .)
+    COLON           reduce using rule 25 (expression -> ( expression ) .)
+    ID              reduce using rule 25 (expression -> ( expression ) .)
+    -               reduce using rule 25 (expression -> ( expression ) .)
+    (               reduce using rule 25 (expression -> ( expression ) .)
+    FLOAT           reduce using rule 25 (expression -> ( expression ) .)
+    INTEGER         reduce using rule 25 (expression -> ( expression ) .)
 
-    expression                     shift and go to state 53
 
 state 38
 
-    (6) statement -> FOR ID IN . expression TO expression COLON
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (7) statement -> FOR ID IN . expression TO expression COLON
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
-    expression                     shift and go to state 54
+    expression                     shift and go to state 55
 
 state 39
 
-    (14) statement -> LPAREN expression RPAREN .
+    (6) statement -> FOR expression TO . expression COLON
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
-    $end            reduce using rule 14 (statement -> LPAREN expression RPAREN .)
+    ID              shift and go to state 17
+    -               shift and go to state 4
+    (               shift and go to state 3
+    FLOAT           shift and go to state 12
+    INTEGER         shift and go to state 11
 
+    expression                     shift and go to state 56
 
 state 40
 
-    (12) statement -> ID RECEIVE STRING .
+    (15) statement -> LPAREN expression RPAREN .
 
-    $end            reduce using rule 12 (statement -> ID RECEIVE STRING .)
+    $end            reduce using rule 15 (statement -> LPAREN expression RPAREN .)
 
 
 state 41
 
-    (11) statement -> ID RECEIVE expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (13) statement -> ID RECEIVE STRING .
 
-    $end            reduce using rule 11 (statement -> ID RECEIVE expression .)
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
+    $end            reduce using rule 13 (statement -> ID RECEIVE STRING .)
 
 
 state 42
 
-    (10) statement -> IF expression COLON .
+    (12) statement -> ID RECEIVE expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    $end            reduce using rule 10 (statement -> IF expression COLON .)
+    $end            reduce using rule 12 (statement -> ID RECEIVE expression .)
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
 
 
 state 43
 
-    (16) expression -> expression LE expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (3) expression -> ID LPAREN RPAREN .
 
-  ! shift/reduce conflict for LT resolved as shift
-  ! shift/reduce conflict for LE resolved as shift
-  ! shift/reduce conflict for GT resolved as shift
-  ! shift/reduce conflict for GE resolved as shift
-  ! shift/reduce conflict for PLUS resolved as shift
-  ! shift/reduce conflict for MINUS resolved as shift
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for COMMA resolved as shift
-    $end            reduce using rule 16 (expression -> expression LE expression .)
-    )               reduce using rule 16 (expression -> expression LE expression .)
-    TO              reduce using rule 16 (expression -> expression LE expression .)
-    RPAREN          reduce using rule 16 (expression -> expression LE expression .)
-    COLON           reduce using rule 16 (expression -> expression LE expression .)
-    -               reduce using rule 16 (expression -> expression LE expression .)
-    (               reduce using rule 16 (expression -> expression LE expression .)
-    FLOAT           reduce using rule 16 (expression -> expression LE expression .)
-    INTEGER         reduce using rule 16 (expression -> expression LE expression .)
-    ID              reduce using rule 16 (expression -> expression LE expression .)
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
-
-  ! LT              [ reduce using rule 16 (expression -> expression LE expression .) ]
-  ! LE              [ reduce using rule 16 (expression -> expression LE expression .) ]
-  ! GT              [ reduce using rule 16 (expression -> expression LE expression .) ]
-  ! GE              [ reduce using rule 16 (expression -> expression LE expression .) ]
-  ! PLUS            [ reduce using rule 16 (expression -> expression LE expression .) ]
-  ! MINUS           [ reduce using rule 16 (expression -> expression LE expression .) ]
-  ! TIMES           [ reduce using rule 16 (expression -> expression LE expression .) ]
-  ! DIVIDE          [ reduce using rule 16 (expression -> expression LE expression .) ]
-  ! COMMA           [ reduce using rule 16 (expression -> expression LE expression .) ]
+    LT              reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    LE              reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    GT              reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    GE              reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    PLUS            reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    MINUS           reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    TIMES           reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    DIVIDE          reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    COMMA           reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    $end            reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    )               reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    TO              reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    RPAREN          reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    COLON           reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    ID              reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    -               reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    (               reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    FLOAT           reduce using rule 3 (expression -> ID LPAREN RPAREN .)
+    INTEGER         reduce using rule 3 (expression -> ID LPAREN RPAREN .)
 
 
 state 44
 
-    (22) expression -> expression DIVIDE expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (11) statement -> IF expression COLON .
 
-    LT              reduce using rule 22 (expression -> expression DIVIDE expression .)
-    LE              reduce using rule 22 (expression -> expression DIVIDE expression .)
-    GT              reduce using rule 22 (expression -> expression DIVIDE expression .)
-    GE              reduce using rule 22 (expression -> expression DIVIDE expression .)
-    PLUS            reduce using rule 22 (expression -> expression DIVIDE expression .)
-    MINUS           reduce using rule 22 (expression -> expression DIVIDE expression .)
-    TIMES           reduce using rule 22 (expression -> expression DIVIDE expression .)
-    DIVIDE          reduce using rule 22 (expression -> expression DIVIDE expression .)
-    COMMA           reduce using rule 22 (expression -> expression DIVIDE expression .)
-    $end            reduce using rule 22 (expression -> expression DIVIDE expression .)
-    )               reduce using rule 22 (expression -> expression DIVIDE expression .)
-    TO              reduce using rule 22 (expression -> expression DIVIDE expression .)
-    RPAREN          reduce using rule 22 (expression -> expression DIVIDE expression .)
-    COLON           reduce using rule 22 (expression -> expression DIVIDE expression .)
-    -               reduce using rule 22 (expression -> expression DIVIDE expression .)
-    (               reduce using rule 22 (expression -> expression DIVIDE expression .)
-    FLOAT           reduce using rule 22 (expression -> expression DIVIDE expression .)
-    INTEGER         reduce using rule 22 (expression -> expression DIVIDE expression .)
-    ID              reduce using rule 22 (expression -> expression DIVIDE expression .)
-
-  ! LT              [ shift and go to state 29 ]
-  ! LE              [ shift and go to state 25 ]
-  ! GT              [ shift and go to state 30 ]
-  ! GE              [ shift and go to state 27 ]
-  ! PLUS            [ shift and go to state 31 ]
-  ! MINUS           [ shift and go to state 33 ]
-  ! TIMES           [ shift and go to state 28 ]
-  ! DIVIDE          [ shift and go to state 26 ]
-  ! COMMA           [ shift and go to state 32 ]
+    $end            reduce using rule 11 (statement -> IF expression COLON .)
 
 
 state 45
 
-    (18) expression -> expression GE expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (17) expression -> expression LE expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
   ! shift/reduce conflict for LT resolved as shift
   ! shift/reduce conflict for LE resolved as shift
@@ -1182,93 +1143,93 @@ state 45
   ! shift/reduce conflict for TIMES resolved as shift
   ! shift/reduce conflict for DIVIDE resolved as shift
   ! shift/reduce conflict for COMMA resolved as shift
-    $end            reduce using rule 18 (expression -> expression GE expression .)
-    )               reduce using rule 18 (expression -> expression GE expression .)
-    TO              reduce using rule 18 (expression -> expression GE expression .)
-    RPAREN          reduce using rule 18 (expression -> expression GE expression .)
-    COLON           reduce using rule 18 (expression -> expression GE expression .)
-    -               reduce using rule 18 (expression -> expression GE expression .)
-    (               reduce using rule 18 (expression -> expression GE expression .)
-    FLOAT           reduce using rule 18 (expression -> expression GE expression .)
-    INTEGER         reduce using rule 18 (expression -> expression GE expression .)
-    ID              reduce using rule 18 (expression -> expression GE expression .)
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
+    $end            reduce using rule 17 (expression -> expression LE expression .)
+    )               reduce using rule 17 (expression -> expression LE expression .)
+    TO              reduce using rule 17 (expression -> expression LE expression .)
+    RPAREN          reduce using rule 17 (expression -> expression LE expression .)
+    COLON           reduce using rule 17 (expression -> expression LE expression .)
+    ID              reduce using rule 17 (expression -> expression LE expression .)
+    -               reduce using rule 17 (expression -> expression LE expression .)
+    (               reduce using rule 17 (expression -> expression LE expression .)
+    FLOAT           reduce using rule 17 (expression -> expression LE expression .)
+    INTEGER         reduce using rule 17 (expression -> expression LE expression .)
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
 
-  ! LT              [ reduce using rule 18 (expression -> expression GE expression .) ]
-  ! LE              [ reduce using rule 18 (expression -> expression GE expression .) ]
-  ! GT              [ reduce using rule 18 (expression -> expression GE expression .) ]
-  ! GE              [ reduce using rule 18 (expression -> expression GE expression .) ]
-  ! PLUS            [ reduce using rule 18 (expression -> expression GE expression .) ]
-  ! MINUS           [ reduce using rule 18 (expression -> expression GE expression .) ]
-  ! TIMES           [ reduce using rule 18 (expression -> expression GE expression .) ]
-  ! DIVIDE          [ reduce using rule 18 (expression -> expression GE expression .) ]
-  ! COMMA           [ reduce using rule 18 (expression -> expression GE expression .) ]
+  ! LT              [ reduce using rule 17 (expression -> expression LE expression .) ]
+  ! LE              [ reduce using rule 17 (expression -> expression LE expression .) ]
+  ! GT              [ reduce using rule 17 (expression -> expression LE expression .) ]
+  ! GE              [ reduce using rule 17 (expression -> expression LE expression .) ]
+  ! PLUS            [ reduce using rule 17 (expression -> expression LE expression .) ]
+  ! MINUS           [ reduce using rule 17 (expression -> expression LE expression .) ]
+  ! TIMES           [ reduce using rule 17 (expression -> expression LE expression .) ]
+  ! DIVIDE          [ reduce using rule 17 (expression -> expression LE expression .) ]
+  ! COMMA           [ reduce using rule 17 (expression -> expression LE expression .) ]
 
 
 state 46
 
-    (21) expression -> expression TIMES expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (23) expression -> expression DIVIDE expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    LT              reduce using rule 21 (expression -> expression TIMES expression .)
-    LE              reduce using rule 21 (expression -> expression TIMES expression .)
-    GT              reduce using rule 21 (expression -> expression TIMES expression .)
-    GE              reduce using rule 21 (expression -> expression TIMES expression .)
-    PLUS            reduce using rule 21 (expression -> expression TIMES expression .)
-    MINUS           reduce using rule 21 (expression -> expression TIMES expression .)
-    TIMES           reduce using rule 21 (expression -> expression TIMES expression .)
-    DIVIDE          reduce using rule 21 (expression -> expression TIMES expression .)
-    COMMA           reduce using rule 21 (expression -> expression TIMES expression .)
-    $end            reduce using rule 21 (expression -> expression TIMES expression .)
-    )               reduce using rule 21 (expression -> expression TIMES expression .)
-    TO              reduce using rule 21 (expression -> expression TIMES expression .)
-    RPAREN          reduce using rule 21 (expression -> expression TIMES expression .)
-    COLON           reduce using rule 21 (expression -> expression TIMES expression .)
-    -               reduce using rule 21 (expression -> expression TIMES expression .)
-    (               reduce using rule 21 (expression -> expression TIMES expression .)
-    FLOAT           reduce using rule 21 (expression -> expression TIMES expression .)
-    INTEGER         reduce using rule 21 (expression -> expression TIMES expression .)
-    ID              reduce using rule 21 (expression -> expression TIMES expression .)
+    LT              reduce using rule 23 (expression -> expression DIVIDE expression .)
+    LE              reduce using rule 23 (expression -> expression DIVIDE expression .)
+    GT              reduce using rule 23 (expression -> expression DIVIDE expression .)
+    GE              reduce using rule 23 (expression -> expression DIVIDE expression .)
+    PLUS            reduce using rule 23 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 23 (expression -> expression DIVIDE expression .)
+    TIMES           reduce using rule 23 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 23 (expression -> expression DIVIDE expression .)
+    COMMA           reduce using rule 23 (expression -> expression DIVIDE expression .)
+    $end            reduce using rule 23 (expression -> expression DIVIDE expression .)
+    )               reduce using rule 23 (expression -> expression DIVIDE expression .)
+    TO              reduce using rule 23 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 23 (expression -> expression DIVIDE expression .)
+    COLON           reduce using rule 23 (expression -> expression DIVIDE expression .)
+    ID              reduce using rule 23 (expression -> expression DIVIDE expression .)
+    -               reduce using rule 23 (expression -> expression DIVIDE expression .)
+    (               reduce using rule 23 (expression -> expression DIVIDE expression .)
+    FLOAT           reduce using rule 23 (expression -> expression DIVIDE expression .)
+    INTEGER         reduce using rule 23 (expression -> expression DIVIDE expression .)
 
-  ! LT              [ shift and go to state 29 ]
-  ! LE              [ shift and go to state 25 ]
-  ! GT              [ shift and go to state 30 ]
-  ! GE              [ shift and go to state 27 ]
-  ! PLUS            [ shift and go to state 31 ]
-  ! MINUS           [ shift and go to state 33 ]
-  ! TIMES           [ shift and go to state 28 ]
-  ! DIVIDE          [ shift and go to state 26 ]
-  ! COMMA           [ shift and go to state 32 ]
+  ! LT              [ shift and go to state 30 ]
+  ! LE              [ shift and go to state 26 ]
+  ! GT              [ shift and go to state 31 ]
+  ! GE              [ shift and go to state 28 ]
+  ! PLUS            [ shift and go to state 32 ]
+  ! MINUS           [ shift and go to state 34 ]
+  ! TIMES           [ shift and go to state 29 ]
+  ! DIVIDE          [ shift and go to state 27 ]
+  ! COMMA           [ shift and go to state 33 ]
 
 
 state 47
 
-    (15) expression -> expression LT expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (19) expression -> expression GE expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
   ! shift/reduce conflict for LT resolved as shift
   ! shift/reduce conflict for LE resolved as shift
@@ -1279,49 +1240,93 @@ state 47
   ! shift/reduce conflict for TIMES resolved as shift
   ! shift/reduce conflict for DIVIDE resolved as shift
   ! shift/reduce conflict for COMMA resolved as shift
-    $end            reduce using rule 15 (expression -> expression LT expression .)
-    )               reduce using rule 15 (expression -> expression LT expression .)
-    TO              reduce using rule 15 (expression -> expression LT expression .)
-    RPAREN          reduce using rule 15 (expression -> expression LT expression .)
-    COLON           reduce using rule 15 (expression -> expression LT expression .)
-    -               reduce using rule 15 (expression -> expression LT expression .)
-    (               reduce using rule 15 (expression -> expression LT expression .)
-    FLOAT           reduce using rule 15 (expression -> expression LT expression .)
-    INTEGER         reduce using rule 15 (expression -> expression LT expression .)
-    ID              reduce using rule 15 (expression -> expression LT expression .)
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
+    $end            reduce using rule 19 (expression -> expression GE expression .)
+    )               reduce using rule 19 (expression -> expression GE expression .)
+    TO              reduce using rule 19 (expression -> expression GE expression .)
+    RPAREN          reduce using rule 19 (expression -> expression GE expression .)
+    COLON           reduce using rule 19 (expression -> expression GE expression .)
+    ID              reduce using rule 19 (expression -> expression GE expression .)
+    -               reduce using rule 19 (expression -> expression GE expression .)
+    (               reduce using rule 19 (expression -> expression GE expression .)
+    FLOAT           reduce using rule 19 (expression -> expression GE expression .)
+    INTEGER         reduce using rule 19 (expression -> expression GE expression .)
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
 
-  ! LT              [ reduce using rule 15 (expression -> expression LT expression .) ]
-  ! LE              [ reduce using rule 15 (expression -> expression LT expression .) ]
-  ! GT              [ reduce using rule 15 (expression -> expression LT expression .) ]
-  ! GE              [ reduce using rule 15 (expression -> expression LT expression .) ]
-  ! PLUS            [ reduce using rule 15 (expression -> expression LT expression .) ]
-  ! MINUS           [ reduce using rule 15 (expression -> expression LT expression .) ]
-  ! TIMES           [ reduce using rule 15 (expression -> expression LT expression .) ]
-  ! DIVIDE          [ reduce using rule 15 (expression -> expression LT expression .) ]
-  ! COMMA           [ reduce using rule 15 (expression -> expression LT expression .) ]
+  ! LT              [ reduce using rule 19 (expression -> expression GE expression .) ]
+  ! LE              [ reduce using rule 19 (expression -> expression GE expression .) ]
+  ! GT              [ reduce using rule 19 (expression -> expression GE expression .) ]
+  ! GE              [ reduce using rule 19 (expression -> expression GE expression .) ]
+  ! PLUS            [ reduce using rule 19 (expression -> expression GE expression .) ]
+  ! MINUS           [ reduce using rule 19 (expression -> expression GE expression .) ]
+  ! TIMES           [ reduce using rule 19 (expression -> expression GE expression .) ]
+  ! DIVIDE          [ reduce using rule 19 (expression -> expression GE expression .) ]
+  ! COMMA           [ reduce using rule 19 (expression -> expression GE expression .) ]
 
 
 state 48
 
-    (17) expression -> expression GT expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (22) expression -> expression TIMES expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
+
+    LT              reduce using rule 22 (expression -> expression TIMES expression .)
+    LE              reduce using rule 22 (expression -> expression TIMES expression .)
+    GT              reduce using rule 22 (expression -> expression TIMES expression .)
+    GE              reduce using rule 22 (expression -> expression TIMES expression .)
+    PLUS            reduce using rule 22 (expression -> expression TIMES expression .)
+    MINUS           reduce using rule 22 (expression -> expression TIMES expression .)
+    TIMES           reduce using rule 22 (expression -> expression TIMES expression .)
+    DIVIDE          reduce using rule 22 (expression -> expression TIMES expression .)
+    COMMA           reduce using rule 22 (expression -> expression TIMES expression .)
+    $end            reduce using rule 22 (expression -> expression TIMES expression .)
+    )               reduce using rule 22 (expression -> expression TIMES expression .)
+    TO              reduce using rule 22 (expression -> expression TIMES expression .)
+    RPAREN          reduce using rule 22 (expression -> expression TIMES expression .)
+    COLON           reduce using rule 22 (expression -> expression TIMES expression .)
+    ID              reduce using rule 22 (expression -> expression TIMES expression .)
+    -               reduce using rule 22 (expression -> expression TIMES expression .)
+    (               reduce using rule 22 (expression -> expression TIMES expression .)
+    FLOAT           reduce using rule 22 (expression -> expression TIMES expression .)
+    INTEGER         reduce using rule 22 (expression -> expression TIMES expression .)
+
+  ! LT              [ shift and go to state 30 ]
+  ! LE              [ shift and go to state 26 ]
+  ! GT              [ shift and go to state 31 ]
+  ! GE              [ shift and go to state 28 ]
+  ! PLUS            [ shift and go to state 32 ]
+  ! MINUS           [ shift and go to state 34 ]
+  ! TIMES           [ shift and go to state 29 ]
+  ! DIVIDE          [ shift and go to state 27 ]
+  ! COMMA           [ shift and go to state 33 ]
+
+
+state 49
+
+    (16) expression -> expression LT expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
   ! shift/reduce conflict for LT resolved as shift
   ! shift/reduce conflict for LE resolved as shift
@@ -1332,353 +1337,399 @@ state 48
   ! shift/reduce conflict for TIMES resolved as shift
   ! shift/reduce conflict for DIVIDE resolved as shift
   ! shift/reduce conflict for COMMA resolved as shift
-    $end            reduce using rule 17 (expression -> expression GT expression .)
-    )               reduce using rule 17 (expression -> expression GT expression .)
-    TO              reduce using rule 17 (expression -> expression GT expression .)
-    RPAREN          reduce using rule 17 (expression -> expression GT expression .)
-    COLON           reduce using rule 17 (expression -> expression GT expression .)
-    -               reduce using rule 17 (expression -> expression GT expression .)
-    (               reduce using rule 17 (expression -> expression GT expression .)
-    FLOAT           reduce using rule 17 (expression -> expression GT expression .)
-    INTEGER         reduce using rule 17 (expression -> expression GT expression .)
-    ID              reduce using rule 17 (expression -> expression GT expression .)
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
+    $end            reduce using rule 16 (expression -> expression LT expression .)
+    )               reduce using rule 16 (expression -> expression LT expression .)
+    TO              reduce using rule 16 (expression -> expression LT expression .)
+    RPAREN          reduce using rule 16 (expression -> expression LT expression .)
+    COLON           reduce using rule 16 (expression -> expression LT expression .)
+    ID              reduce using rule 16 (expression -> expression LT expression .)
+    -               reduce using rule 16 (expression -> expression LT expression .)
+    (               reduce using rule 16 (expression -> expression LT expression .)
+    FLOAT           reduce using rule 16 (expression -> expression LT expression .)
+    INTEGER         reduce using rule 16 (expression -> expression LT expression .)
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
 
-  ! LT              [ reduce using rule 17 (expression -> expression GT expression .) ]
-  ! LE              [ reduce using rule 17 (expression -> expression GT expression .) ]
-  ! GT              [ reduce using rule 17 (expression -> expression GT expression .) ]
-  ! GE              [ reduce using rule 17 (expression -> expression GT expression .) ]
-  ! PLUS            [ reduce using rule 17 (expression -> expression GT expression .) ]
-  ! MINUS           [ reduce using rule 17 (expression -> expression GT expression .) ]
-  ! TIMES           [ reduce using rule 17 (expression -> expression GT expression .) ]
-  ! DIVIDE          [ reduce using rule 17 (expression -> expression GT expression .) ]
-  ! COMMA           [ reduce using rule 17 (expression -> expression GT expression .) ]
-
-
-state 49
-
-    (19) expression -> expression PLUS expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
-
-    LT              reduce using rule 19 (expression -> expression PLUS expression .)
-    LE              reduce using rule 19 (expression -> expression PLUS expression .)
-    GT              reduce using rule 19 (expression -> expression PLUS expression .)
-    GE              reduce using rule 19 (expression -> expression PLUS expression .)
-    PLUS            reduce using rule 19 (expression -> expression PLUS expression .)
-    MINUS           reduce using rule 19 (expression -> expression PLUS expression .)
-    COMMA           reduce using rule 19 (expression -> expression PLUS expression .)
-    $end            reduce using rule 19 (expression -> expression PLUS expression .)
-    )               reduce using rule 19 (expression -> expression PLUS expression .)
-    TO              reduce using rule 19 (expression -> expression PLUS expression .)
-    RPAREN          reduce using rule 19 (expression -> expression PLUS expression .)
-    COLON           reduce using rule 19 (expression -> expression PLUS expression .)
-    -               reduce using rule 19 (expression -> expression PLUS expression .)
-    (               reduce using rule 19 (expression -> expression PLUS expression .)
-    FLOAT           reduce using rule 19 (expression -> expression PLUS expression .)
-    INTEGER         reduce using rule 19 (expression -> expression PLUS expression .)
-    ID              reduce using rule 19 (expression -> expression PLUS expression .)
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-
-  ! TIMES           [ reduce using rule 19 (expression -> expression PLUS expression .) ]
-  ! DIVIDE          [ reduce using rule 19 (expression -> expression PLUS expression .) ]
-  ! LT              [ shift and go to state 29 ]
-  ! LE              [ shift and go to state 25 ]
-  ! GT              [ shift and go to state 30 ]
-  ! GE              [ shift and go to state 27 ]
-  ! PLUS            [ shift and go to state 31 ]
-  ! MINUS           [ shift and go to state 33 ]
-  ! COMMA           [ shift and go to state 32 ]
+  ! LT              [ reduce using rule 16 (expression -> expression LT expression .) ]
+  ! LE              [ reduce using rule 16 (expression -> expression LT expression .) ]
+  ! GT              [ reduce using rule 16 (expression -> expression LT expression .) ]
+  ! GE              [ reduce using rule 16 (expression -> expression LT expression .) ]
+  ! PLUS            [ reduce using rule 16 (expression -> expression LT expression .) ]
+  ! MINUS           [ reduce using rule 16 (expression -> expression LT expression .) ]
+  ! TIMES           [ reduce using rule 16 (expression -> expression LT expression .) ]
+  ! DIVIDE          [ reduce using rule 16 (expression -> expression LT expression .) ]
+  ! COMMA           [ reduce using rule 16 (expression -> expression LT expression .) ]
 
 
 state 50
 
-    (20) expression -> expression MINUS expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (18) expression -> expression GT expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    LT              reduce using rule 20 (expression -> expression MINUS expression .)
-    LE              reduce using rule 20 (expression -> expression MINUS expression .)
-    GT              reduce using rule 20 (expression -> expression MINUS expression .)
-    GE              reduce using rule 20 (expression -> expression MINUS expression .)
-    PLUS            reduce using rule 20 (expression -> expression MINUS expression .)
-    MINUS           reduce using rule 20 (expression -> expression MINUS expression .)
-    COMMA           reduce using rule 20 (expression -> expression MINUS expression .)
-    $end            reduce using rule 20 (expression -> expression MINUS expression .)
-    )               reduce using rule 20 (expression -> expression MINUS expression .)
-    TO              reduce using rule 20 (expression -> expression MINUS expression .)
-    RPAREN          reduce using rule 20 (expression -> expression MINUS expression .)
-    COLON           reduce using rule 20 (expression -> expression MINUS expression .)
-    -               reduce using rule 20 (expression -> expression MINUS expression .)
-    (               reduce using rule 20 (expression -> expression MINUS expression .)
-    FLOAT           reduce using rule 20 (expression -> expression MINUS expression .)
-    INTEGER         reduce using rule 20 (expression -> expression MINUS expression .)
-    ID              reduce using rule 20 (expression -> expression MINUS expression .)
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for COMMA resolved as shift
+    $end            reduce using rule 18 (expression -> expression GT expression .)
+    )               reduce using rule 18 (expression -> expression GT expression .)
+    TO              reduce using rule 18 (expression -> expression GT expression .)
+    RPAREN          reduce using rule 18 (expression -> expression GT expression .)
+    COLON           reduce using rule 18 (expression -> expression GT expression .)
+    ID              reduce using rule 18 (expression -> expression GT expression .)
+    -               reduce using rule 18 (expression -> expression GT expression .)
+    (               reduce using rule 18 (expression -> expression GT expression .)
+    FLOAT           reduce using rule 18 (expression -> expression GT expression .)
+    INTEGER         reduce using rule 18 (expression -> expression GT expression .)
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
 
-  ! TIMES           [ reduce using rule 20 (expression -> expression MINUS expression .) ]
-  ! DIVIDE          [ reduce using rule 20 (expression -> expression MINUS expression .) ]
-  ! LT              [ shift and go to state 29 ]
-  ! LE              [ shift and go to state 25 ]
-  ! GT              [ shift and go to state 30 ]
-  ! GE              [ shift and go to state 27 ]
-  ! PLUS            [ shift and go to state 31 ]
-  ! MINUS           [ shift and go to state 33 ]
-  ! COMMA           [ shift and go to state 32 ]
+  ! LT              [ reduce using rule 18 (expression -> expression GT expression .) ]
+  ! LE              [ reduce using rule 18 (expression -> expression GT expression .) ]
+  ! GT              [ reduce using rule 18 (expression -> expression GT expression .) ]
+  ! GE              [ reduce using rule 18 (expression -> expression GT expression .) ]
+  ! PLUS            [ reduce using rule 18 (expression -> expression GT expression .) ]
+  ! MINUS           [ reduce using rule 18 (expression -> expression GT expression .) ]
+  ! TIMES           [ reduce using rule 18 (expression -> expression GT expression .) ]
+  ! DIVIDE          [ reduce using rule 18 (expression -> expression GT expression .) ]
+  ! COMMA           [ reduce using rule 18 (expression -> expression GT expression .) ]
 
 
 state 51
 
-    (1) statement -> FUN ID LPAREN declaration_list . RPAREN COLON
-    (4) declaration_list -> declaration_list . expression
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
+    (20) expression -> expression PLUS expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    RPAREN          shift and go to state 55
-    -               shift and go to state 4
-    (               shift and go to state 3
-    FLOAT           shift and go to state 12
-    INTEGER         shift and go to state 11
-    ID              shift and go to state 16
+    LT              reduce using rule 20 (expression -> expression PLUS expression .)
+    LE              reduce using rule 20 (expression -> expression PLUS expression .)
+    GT              reduce using rule 20 (expression -> expression PLUS expression .)
+    GE              reduce using rule 20 (expression -> expression PLUS expression .)
+    PLUS            reduce using rule 20 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 20 (expression -> expression PLUS expression .)
+    COMMA           reduce using rule 20 (expression -> expression PLUS expression .)
+    $end            reduce using rule 20 (expression -> expression PLUS expression .)
+    )               reduce using rule 20 (expression -> expression PLUS expression .)
+    TO              reduce using rule 20 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 20 (expression -> expression PLUS expression .)
+    COLON           reduce using rule 20 (expression -> expression PLUS expression .)
+    ID              reduce using rule 20 (expression -> expression PLUS expression .)
+    -               reduce using rule 20 (expression -> expression PLUS expression .)
+    (               reduce using rule 20 (expression -> expression PLUS expression .)
+    FLOAT           reduce using rule 20 (expression -> expression PLUS expression .)
+    INTEGER         reduce using rule 20 (expression -> expression PLUS expression .)
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
 
-    expression                     shift and go to state 56
+  ! TIMES           [ reduce using rule 20 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 20 (expression -> expression PLUS expression .) ]
+  ! LT              [ shift and go to state 30 ]
+  ! LE              [ shift and go to state 26 ]
+  ! GT              [ shift and go to state 31 ]
+  ! GE              [ shift and go to state 28 ]
+  ! PLUS            [ shift and go to state 32 ]
+  ! MINUS           [ shift and go to state 34 ]
+  ! COMMA           [ shift and go to state 33 ]
+
 
 state 52
 
-    (3) declaration_list -> expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (21) expression -> expression MINUS expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    RPAREN          reduce using rule 3 (declaration_list -> expression .)
-    -               reduce using rule 3 (declaration_list -> expression .)
-    (               reduce using rule 3 (declaration_list -> expression .)
-    FLOAT           reduce using rule 3 (declaration_list -> expression .)
-    INTEGER         reduce using rule 3 (declaration_list -> expression .)
-    ID              reduce using rule 3 (declaration_list -> expression .)
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
+    LT              reduce using rule 21 (expression -> expression MINUS expression .)
+    LE              reduce using rule 21 (expression -> expression MINUS expression .)
+    GT              reduce using rule 21 (expression -> expression MINUS expression .)
+    GE              reduce using rule 21 (expression -> expression MINUS expression .)
+    PLUS            reduce using rule 21 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 21 (expression -> expression MINUS expression .)
+    COMMA           reduce using rule 21 (expression -> expression MINUS expression .)
+    $end            reduce using rule 21 (expression -> expression MINUS expression .)
+    )               reduce using rule 21 (expression -> expression MINUS expression .)
+    TO              reduce using rule 21 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 21 (expression -> expression MINUS expression .)
+    COLON           reduce using rule 21 (expression -> expression MINUS expression .)
+    ID              reduce using rule 21 (expression -> expression MINUS expression .)
+    -               reduce using rule 21 (expression -> expression MINUS expression .)
+    (               reduce using rule 21 (expression -> expression MINUS expression .)
+    FLOAT           reduce using rule 21 (expression -> expression MINUS expression .)
+    INTEGER         reduce using rule 21 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+
+  ! TIMES           [ reduce using rule 21 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 21 (expression -> expression MINUS expression .) ]
+  ! LT              [ shift and go to state 30 ]
+  ! LE              [ shift and go to state 26 ]
+  ! GT              [ shift and go to state 31 ]
+  ! GE              [ shift and go to state 28 ]
+  ! PLUS            [ shift and go to state 32 ]
+  ! MINUS           [ shift and go to state 34 ]
+  ! COMMA           [ shift and go to state 33 ]
 
 
 state 53
 
-    (5) statement -> FOR expression TO expression . COLON
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (1) statement -> FUN ID LPAREN declaration_list . RPAREN COLON
+    (5) declaration_list -> declaration_list . expression
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
 
-    COLON           shift and go to state 57
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
-
-
-state 54
-
-    (6) statement -> FOR ID IN expression . TO expression COLON
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
-
-    TO              shift and go to state 58
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
-
-
-state 55
-
-    (1) statement -> FUN ID LPAREN declaration_list RPAREN . COLON
-
-    COLON           shift and go to state 59
-
-
-state 56
-
-    (4) declaration_list -> declaration_list expression .
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
-
-    RPAREN          reduce using rule 4 (declaration_list -> declaration_list expression .)
-    -               reduce using rule 4 (declaration_list -> declaration_list expression .)
-    (               reduce using rule 4 (declaration_list -> declaration_list expression .)
-    FLOAT           reduce using rule 4 (declaration_list -> declaration_list expression .)
-    INTEGER         reduce using rule 4 (declaration_list -> declaration_list expression .)
-    ID              reduce using rule 4 (declaration_list -> declaration_list expression .)
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
-
-
-state 57
-
-    (5) statement -> FOR expression TO expression COLON .
-
-    $end            reduce using rule 5 (statement -> FOR expression TO expression COLON .)
-
-
-state 58
-
-    (6) statement -> FOR ID IN expression TO . expression COLON
-    (15) expression -> . expression LT expression
-    (16) expression -> . expression LE expression
-    (17) expression -> . expression GT expression
-    (18) expression -> . expression GE expression
-    (19) expression -> . expression PLUS expression
-    (20) expression -> . expression MINUS expression
-    (21) expression -> . expression TIMES expression
-    (22) expression -> . expression DIVIDE expression
-    (23) expression -> . - expression
-    (24) expression -> . ( expression )
-    (25) expression -> . FLOAT
-    (26) expression -> . INTEGER
-    (27) expression -> . expression COMMA
-    (28) expression -> . ID
-
+    RPAREN          shift and go to state 57
+    ID              shift and go to state 17
     -               shift and go to state 4
     (               shift and go to state 3
     FLOAT           shift and go to state 12
     INTEGER         shift and go to state 11
-    ID              shift and go to state 16
 
-    expression                     shift and go to state 60
+    expression                     shift and go to state 58
+
+state 54
+
+    (4) declaration_list -> expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
+
+    RPAREN          reduce using rule 4 (declaration_list -> expression .)
+    ID              reduce using rule 4 (declaration_list -> expression .)
+    -               reduce using rule 4 (declaration_list -> expression .)
+    (               reduce using rule 4 (declaration_list -> expression .)
+    FLOAT           reduce using rule 4 (declaration_list -> expression .)
+    INTEGER         reduce using rule 4 (declaration_list -> expression .)
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
+
+
+state 55
+
+    (7) statement -> FOR ID IN expression . TO expression COLON
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
+
+    TO              shift and go to state 59
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
+
+
+state 56
+
+    (6) statement -> FOR expression TO expression . COLON
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
+
+    COLON           shift and go to state 60
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
+
+
+state 57
+
+    (1) statement -> FUN ID LPAREN declaration_list RPAREN . COLON
+
+    COLON           shift and go to state 61
+
+
+state 58
+
+    (5) declaration_list -> declaration_list expression .
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
+
+    RPAREN          reduce using rule 5 (declaration_list -> declaration_list expression .)
+    ID              reduce using rule 5 (declaration_list -> declaration_list expression .)
+    -               reduce using rule 5 (declaration_list -> declaration_list expression .)
+    (               reduce using rule 5 (declaration_list -> declaration_list expression .)
+    FLOAT           reduce using rule 5 (declaration_list -> declaration_list expression .)
+    INTEGER         reduce using rule 5 (declaration_list -> declaration_list expression .)
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
+
 
 state 59
+
+    (7) statement -> FOR ID IN expression TO . expression COLON
+    (3) expression -> . ID LPAREN RPAREN
+    (16) expression -> . expression LT expression
+    (17) expression -> . expression LE expression
+    (18) expression -> . expression GT expression
+    (19) expression -> . expression GE expression
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) expression -> . - expression
+    (25) expression -> . ( expression )
+    (26) expression -> . FLOAT
+    (27) expression -> . INTEGER
+    (28) expression -> . expression COMMA
+    (29) expression -> . ID
+
+    ID              shift and go to state 17
+    -               shift and go to state 4
+    (               shift and go to state 3
+    FLOAT           shift and go to state 12
+    INTEGER         shift and go to state 11
+
+    expression                     shift and go to state 62
+
+state 60
+
+    (6) statement -> FOR expression TO expression COLON .
+
+    $end            reduce using rule 6 (statement -> FOR expression TO expression COLON .)
+
+
+state 61
 
     (1) statement -> FUN ID LPAREN declaration_list RPAREN COLON .
 
     $end            reduce using rule 1 (statement -> FUN ID LPAREN declaration_list RPAREN COLON .)
 
 
-state 60
+state 62
 
-    (6) statement -> FOR ID IN expression TO expression . COLON
-    (15) expression -> expression . LT expression
-    (16) expression -> expression . LE expression
-    (17) expression -> expression . GT expression
-    (18) expression -> expression . GE expression
-    (19) expression -> expression . PLUS expression
-    (20) expression -> expression . MINUS expression
-    (21) expression -> expression . TIMES expression
-    (22) expression -> expression . DIVIDE expression
-    (27) expression -> expression . COMMA
+    (7) statement -> FOR ID IN expression TO expression . COLON
+    (16) expression -> expression . LT expression
+    (17) expression -> expression . LE expression
+    (18) expression -> expression . GT expression
+    (19) expression -> expression . GE expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+    (28) expression -> expression . COMMA
 
-    COLON           shift and go to state 61
-    LT              shift and go to state 29
-    LE              shift and go to state 25
-    GT              shift and go to state 30
-    GE              shift and go to state 27
-    PLUS            shift and go to state 31
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 28
-    DIVIDE          shift and go to state 26
-    COMMA           shift and go to state 32
+    COLON           shift and go to state 63
+    LT              shift and go to state 30
+    LE              shift and go to state 26
+    GT              shift and go to state 31
+    GE              shift and go to state 28
+    PLUS            shift and go to state 32
+    MINUS           shift and go to state 34
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 27
+    COMMA           shift and go to state 33
 
 
-state 61
+state 63
 
-    (6) statement -> FOR ID IN expression TO expression COLON .
+    (7) statement -> FOR ID IN expression TO expression COLON .
 
-    $end            reduce using rule 6 (statement -> FOR ID IN expression TO expression COLON .)
+    $end            reduce using rule 7 (statement -> FOR ID IN expression TO expression COLON .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for LT in state 43 resolved as shift
-WARNING: shift/reduce conflict for LE in state 43 resolved as shift
-WARNING: shift/reduce conflict for GT in state 43 resolved as shift
-WARNING: shift/reduce conflict for GE in state 43 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 43 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 43 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 43 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 43 resolved as shift
-WARNING: shift/reduce conflict for COMMA in state 43 resolved as shift
 WARNING: shift/reduce conflict for LT in state 45 resolved as shift
 WARNING: shift/reduce conflict for LE in state 45 resolved as shift
 WARNING: shift/reduce conflict for GT in state 45 resolved as shift
@@ -1697,12 +1748,21 @@ WARNING: shift/reduce conflict for MINUS in state 47 resolved as shift
 WARNING: shift/reduce conflict for TIMES in state 47 resolved as shift
 WARNING: shift/reduce conflict for DIVIDE in state 47 resolved as shift
 WARNING: shift/reduce conflict for COMMA in state 47 resolved as shift
-WARNING: shift/reduce conflict for LT in state 48 resolved as shift
-WARNING: shift/reduce conflict for LE in state 48 resolved as shift
-WARNING: shift/reduce conflict for GT in state 48 resolved as shift
-WARNING: shift/reduce conflict for GE in state 48 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 48 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 48 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 48 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 48 resolved as shift
-WARNING: shift/reduce conflict for COMMA in state 48 resolved as shift
+WARNING: shift/reduce conflict for LT in state 49 resolved as shift
+WARNING: shift/reduce conflict for LE in state 49 resolved as shift
+WARNING: shift/reduce conflict for GT in state 49 resolved as shift
+WARNING: shift/reduce conflict for GE in state 49 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 49 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 49 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 49 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 49 resolved as shift
+WARNING: shift/reduce conflict for COMMA in state 49 resolved as shift
+WARNING: shift/reduce conflict for LT in state 50 resolved as shift
+WARNING: shift/reduce conflict for LE in state 50 resolved as shift
+WARNING: shift/reduce conflict for GT in state 50 resolved as shift
+WARNING: shift/reduce conflict for GE in state 50 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 50 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 50 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 50 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 50 resolved as shift
+WARNING: shift/reduce conflict for COMMA in state 50 resolved as shift
