@@ -70,6 +70,14 @@ in if statement we also use 'end' token to represent the end of the statement
 
 Procedures are functions without parameters
 
+```
+fun f:
+  print "hello world!"
+end
+
+f()
+```
+
 ## current features
 
 * arithmetic calculations with integers
