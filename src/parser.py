@@ -12,8 +12,34 @@ precedence = (
 )
 
 variables = {}
+procedures = []
 current_line = 0
 code_lines = []
+
+def p_fun_expression(p):
+    'statement : FUN ID LPAREN declaration_list RPAREN COLON'
+    print "we got a function!"
+
+def p_procedure_expression(p):
+    'statement : FUN ID LPAREN RPAREN COLON'
+
+    commands_in_procedure = []
+
+    line_counter = current_line + 1
+    while code_lines[line_counter] != 'end\n':
+        commands_in_procedure.append(code_lines[line_counter])
+        null_lines_list.append(line_counter)
+        line_counter += 1
+
+    procedures.append([p[2], commands_in_procedure])
+
+def p_declaration_list_1(t):
+    'declaration_list : expression'
+    pass
+
+def p_declaration_list_2(t):
+    'declaration_list : declaration_list expression '
+    pass
 
 def p_for_expression(p):
     'statement : FOR expression TO expression COLON'
@@ -142,13 +168,26 @@ def p_expression_number(p):
                   | INTEGER'''
     p[0] = p[1]
 
+def p_expression_comma(p):
+    'expression : expression COMMA'
+
 def p_expression_id(p):
     "expression : ID"
-    try:
-        p[0] = variables[p[1]]
-    except LookupError:
-        print("Undefined variable '%s'" % p[1])
-        p[0] = 0
+
+    there_is_procedure = False
+
+    for i in procedures:
+        if p[1] == i[0]:
+            there_is_procedure = True
+            for j in i[1]:
+                parser.parse(j)
+
+    if not there_is_procedure:
+        try:
+            p[0] = variables[p[1]]
+        except LookupError:
+            print("Undefined variable '%s'" % p[1])
+            p[0] = 0
 
 def p_error(p):
     if p:

@@ -16,6 +16,7 @@ tokens = [
    'RECEIVE',
    'NEWLINE',
    'COLON',
+   'COMMA',
 ]
 
 boolean_operators = [
@@ -40,6 +41,7 @@ reserved = {
    'return' : 'RETURN',
    'in' : 'IN',
    'end' : 'END',
+   'fun' : 'FUN',
 }
 
 literals = [ '{', '}']
@@ -56,6 +58,7 @@ t_QUOTATION = r'\"'
 t_RECEIVE   = r'\='
 t_STRING    = r'\".*?\"'
 t_COLON     = r':'
+t_COMMA = r'\,'
 
 t_LT        = r'<'
 t_LE        = r'<='

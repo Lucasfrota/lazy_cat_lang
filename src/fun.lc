@@ -1,0 +1,5 @@
+fun f ():
+  print "hello world!"
+end
+
+f
