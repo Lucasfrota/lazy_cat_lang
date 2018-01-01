@@ -66,6 +66,10 @@ end
 
 in if statement we also use 'end' token to represent the end of the statement
 
+* Procedures
+
+Procedures are functions without parameters
+
 ## current features
 
 * arithmetic calculations with integers
@@ -75,3 +79,4 @@ in if statement we also use 'end' token to represent the end of the statement
 * for loop
 * for in I loop
 * if block
+* procedures
