@@ -22,7 +22,7 @@ b = "abc"
 ```
 * print
 
-the show the variables content just print it!
+To show the variables content just print it!
 
 ```
 print a
@@ -33,7 +33,7 @@ print b
 
 For now there are only two types of loop, the iterative one and the not iterativo.
 
-the iterative loop is used when you need to know the index of the loop, you can assign the index to a variable like I for example as shown below
+The iterative loop is used when you need to know the index of the loop, you can assign the index to a variable like I for example as shown below
 
 ```
 for i in 1 to 5:
@@ -41,8 +41,30 @@ for i in 1 to 5:
 end
 ```
 
-this loop will go from 1 to 5, the number of the iteration is represented by I, it's also important to pay attention on the 'end' token, it specifies where is the end of this loop
+this loop will go from 1 to 5, the number of the iteration is represented by the variable I, it's also important to pay attention on the 'end' token, it specifies where is the end of this loop
 
+The non iterative loop is used when you just need to repeat some action at certain number of times
+
+```
+for 1 to 5:
+  print "hello world!"
+end
+```
+
+In this example the string "hello world" will be printed 5 times
+
+* If
+
+the if statement is pretty simple, you just have to write a boolean expression after the 'if', if it is true the lines of code inside the block will be executed, otherwise the program will jump to the end of the block
+
+```
+a = 1
+if a < 2:
+  print "1 is greater then 2!"
+end
+```
+
+in if statement we also use 'end' token to represent the end of the statement
 
 ## current features
 
