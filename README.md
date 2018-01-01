@@ -75,6 +75,11 @@ fun f:
   print "hello world!"
 end
 
+fun f2():
+  print "hi world!"
+end
+
+f2()
 f()
 ```
 
