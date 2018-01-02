@@ -1,14 +1,10 @@
 fun f:
-  print "hello world!"
+  print "hello from function f!"
 endfun
 
 fun f2():
-  print "hello from f2!"
-  for 1 to 5:
-    print "hello"//
-  endfor
+  print "hello from function f2!"
   f()
 endfun
-
 
 f2()

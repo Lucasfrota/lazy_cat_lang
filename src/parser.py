@@ -62,7 +62,7 @@ def p_function_expression(p):
 
 def p_function_expression_paren(p):
     'statement : FUN ID LPAREN RPAREN COLON'
-    
+
     go_next_line()
 
     current_line = program_counter
@@ -169,6 +169,11 @@ def p_endfor(p):
 
 def p_endfun(p):
     'statement : ENDFUN'
+    go_next_line()
+    pass
+
+def p_return(p):
+    'statement : RETURN'
     go_next_line()
     pass
 
