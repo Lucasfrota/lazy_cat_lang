@@ -7,4 +7,5 @@ fun f2():
   f()
 endfun
 
-f2()
+var a = "aa"
+a = f2()

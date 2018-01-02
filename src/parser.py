@@ -37,6 +37,21 @@ def set_next_line(line):
         global program_counter
         program_counter = line
 
+def call_function(name):
+
+    there_is_function = False
+
+    for function in functions:
+        if name == function[0]:
+            current_line = program_counter
+            for i in range(function[1][0], function[2][0]):
+                parser.parse(code_lines[i])
+            set_next_line(current_line)
+            there_is_function = True
+
+    if not there_is_function:
+        print "there is no function called '" + p[1] + "'"
+
 def p_fun_expression(p):
     'statement : FUN ID LPAREN declaration_list RPAREN COLON'
     print "we got a function!"
@@ -79,23 +94,28 @@ def p_function_expression_paren(p):
 
     functions.append([p[2], [first_line], [current_line] ])
 
+def p_new_statement_function(p):
+    'statement : VAR ID RECEIVE ID LPAREN RPAREN'
+    go_next_line()
+
+    call_function(p[4])
+
+    print "we got a new statement!"
+
+def p_statement_function(p):
+    'statement : ID RECEIVE ID LPAREN RPAREN'
+    go_next_line()
+
+    call_function(p[3])
+
+    print "we got a statement!"
+
 def p_call_function(p):
     'expression : ID LPAREN RPAREN'
 
     go_next_line()
 
-    there_is_function = False
-
-    for function in functions:
-        if p[1] == function[0]:
-            current_line = program_counter
-            for i in range(function[1][0], function[2][0]):
-                parser.parse(code_lines[i])
-            set_next_line(current_line)
-            there_is_function = True
-
-    if not there_is_function:
-        print "there is no function called '" + p[1] + "'"
+    call_function(p[1])
 
 def p_declaration_list_1(t):
     'declaration_list : expression'
