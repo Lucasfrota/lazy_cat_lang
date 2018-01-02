@@ -17,8 +17,8 @@ lazy_cat hello_world.lc
 Lazy cat is a weak typed language so if you want to create a variable it is only required that you say its name and then its value like this:
 
 ```
-a = 10
-b = "abc"
+var a = 10
+var b = "abc"
 ```
 ### print
 
