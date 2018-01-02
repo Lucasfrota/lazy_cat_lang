@@ -38,17 +38,17 @@ The iterative loop is used when you need to know the index of the loop, you can 
 ```
 for i in 1 to 5:
   print i
-end
+endfor
 ```
 
-this loop will go from 1 to 5, the number of the iteration is represented by the variable I, it's also important to pay attention on the 'end' token, it specifies where is the end of this loop
+this loop will go from 1 to 5, the number of the iteration is represented by the variable I, it's also important to pay attention on the 'endfor' token, it specifies where is the end of this loop
 
 The non iterative loop is used when you just need to repeat some action at certain number of times
 
 ```
 for 1 to 5:
   print "hello world!"
-end
+endfor
 ```
 
 In this example the string "hello world" will be printed 5 times
@@ -61,10 +61,10 @@ the if statement is pretty simple, you just have to write a boolean expression a
 var a = 1
 if a < 2:
   print "1 is greater then 2!"
-end
+endif
 ```
 
-in if statement we also use 'end' token to represent the end of the statement
+in if statement we use 'endif' token to represent the end of the statement
 
 ### Functions
 
