@@ -14,25 +14,11 @@ precedence = (
 
 variables = {}
 procedures = []
-for_base_line = -1
-
-for_first_number = -1
-for_sec_number = -1
 
 jumped = False
 
 program_counter = -1
 code_lines = []
-
-def set_for_base_line(line):
-    global for_base_line
-    for_base_line = line
-
-def set_for_numbers(first_num, sec_num):
-    global for_first_number
-    global for_sec_number
-    for_first_number = first_num
-    for_sec_number = sec_num
 
 def go_next_line():
     global jumped
@@ -117,8 +103,6 @@ def p_declaration_list_2(t):
 def p_for_expression(p):
     'statement : FOR expression TO expression COLON'
 
-    set_for_base_line(program_counter + 1)
-
     is_increasing = None
 
     if p[2] < p[4]:
@@ -126,42 +110,28 @@ def p_for_expression(p):
     else:
         is_increasing = False
 
-    for_list.append([["for" + str(quantity_for)], [ p[2], p[4] ], [is_increasing] ])#in this case 'true' is to show that the for is increasing
-
-    set_for_numbers(p[2], p[4])
+    for_list.append([["for" + str(quantity_for)], [ p[2], p[4] ], [is_increasing], [program_counter + 1], [None] ])
 
     go_next_line()
 
 def p_for_in_expression(p):
     'statement : FOR ID IN expression TO expression COLON'
 
-    go_next_line()
-    '''
     variables[p[2]] = None
 
-    commands_in_loop = []
+    is_increasing = None
 
-    line_counter = current_line + 1
-    while code_lines[line_counter][-4:] != 'end\n':
-        commands_in_loop.append(code_lines[line_counter])
-        line_counter += 1
-
-    if p[6] > p[4]:
-        for i in range(p[4], p[6]):
-            variables[p[2]] = i
-            for j in commands_in_loop:
-                parser.parse(j)
-
-        variables[p[2]] = variables[p[2]] + 1
+    if p[4] < p[6]:
+        is_increasing = True
     else:
-        sec_num = p[4]
-        while sec_num > p[6]:
-            variables[p[2]] = sec_num
-            for j in commands_in_loop:
-                parser.parse(j)
-            sec_num -= 1
-        variables[p[2]] = variables[p[2]] - 1
-    '''
+        is_increasing = False
+
+    is_for_in = True
+    for_list.append([["for" + str(quantity_for)], [ p[4], p[6] ], [is_increasing], [program_counter + 1], [p[2]] ])
+
+    variables[p[2]] = for_list[quantity_for][1][0]
+
+    go_next_line()
 
 def p_endfor(p):
     'statement : ENDFOR'
@@ -169,16 +139,26 @@ def p_endfor(p):
 
     global quantity_for
 
-    if for_list[quantity_for][2][0] == True:
+    is_increasing = for_list[quantity_for][2][0]
+
+    if is_increasing == True:
         if for_list[quantity_for][1][0] < for_list[quantity_for][1][1]:
             for_list[quantity_for][1][0] += 1
-            set_next_line(for_base_line)
+            set_next_line(for_list[quantity_for][3][0])
+
+            if for_list[quantity_for][4][0] is not None:
+                variables[for_list[quantity_for][4][0]] = for_list[quantity_for][1][0]
+
         else:
             quantity_for += 1
     else:
         if for_list[quantity_for][1][0] > for_list[quantity_for][1][1]:
-            for_list[quantity_for][1][1] += 1
-            set_next_line(for_base_line)
+            for_list[quantity_for][1][0] -= 1
+            set_next_line(for_list[quantity_for][3][0])
+
+            if for_list[quantity_for][4][0] is not None:
+                variables[for_list[quantity_for][4][0]] = for_list[quantity_for][1][0]
+
         else:
             quantity_for += 1
 
