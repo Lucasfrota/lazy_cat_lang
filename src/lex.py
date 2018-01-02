@@ -39,6 +39,7 @@ reserved = {
    'and' : 'AND',
    'not' : 'NOT',
    'return' : 'RETURN',
+   'var' : 'VAR',
    'in' : 'IN',
    'endfor' : 'ENDFOR',
    'endfun' : 'ENDFUN',

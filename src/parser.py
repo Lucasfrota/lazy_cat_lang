@@ -215,14 +215,30 @@ def p_endif(p):
     pass
 
 def p_statement_assign(p):
-    'statement : ID RECEIVE expression'
+    'statement : VAR ID RECEIVE expression'
     go_next_line()
-    variables[p[1]] = p[3]
+    variables[p[2]] = p[4]
 
 def p_string(p):
+    'statement : VAR ID RECEIVE STRING'
+    go_next_line()
+    variables[p[2]] = p[4][1:-1]
+
+def p_change_statement_assign(p):
+    'statement : ID RECEIVE expression'
+    go_next_line()
+    if p[1] in variables:
+        variables[p[1]] = p[3]
+    else:
+        print "This variable has to be created before being assigned"
+
+def p_change_string(p):
     'statement : ID RECEIVE STRING'
     go_next_line()
-    variables[p[1]] = p[3][1:-1]
+    if  p[1] in variables:
+        variables[p[1]] = p[3][1:-1]
+    else:
+        print "This variable has to be created before being assigned"
 
 def p_statement_expr(p):
     'statement : expression'

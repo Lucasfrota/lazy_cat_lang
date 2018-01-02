@@ -1,9 +1,9 @@
-first_num = 0//first numer in the sequence
-sec_num = 1
+var first_num = 0//first numer in the sequence
+var sec_num = 1
 
 for 1 to 10:
-  aux = first_num
+  var aux = first_num
   first_num = sec_num
   sec_num = sec_num + aux
   print first_num
-end
+endfor
