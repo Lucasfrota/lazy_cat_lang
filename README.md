@@ -12,7 +12,7 @@ lazy_cat hello_world.lc
 
 ## Basics
 
-### variables
+### Variables
 
 Lazy cat is a weak typed language so if you want to create a variable it is only required that you say its name and then its value like this:
 
@@ -20,7 +20,7 @@ Lazy cat is a weak typed language so if you want to create a variable it is only
 var a = 10
 var b = "abc"
 ```
-### print
+### Print
 
 To show the variables content just print it!
 
@@ -29,7 +29,7 @@ print a
 print b
 ```
 
-### loops
+### Loops
 
 For now there are only two types of loop, the iterative one and the not iterativo.
 
@@ -66,34 +66,34 @@ end
 
 in if statement we also use 'end' token to represent the end of the statement
 
-### Procedures
+### Functions
 
-Procedures are functions without parameters, to create a procedure you just have to use the token 'fun' and define a name to your procedure, then you just need to define what your procedure does. to mark the end of the procedure you have to use the 'end' token
+To create a function you just have to use the token 'fun' and define a name to your function, then you just need to define what your function does. to mark the end of the function you have to use the 'endfun' token
 
 ```
 fun f:
-  print "hello world!"
-end
+  print "hello from function f!"
+endfun
 
 fun f2():
-  print "hi world!"
-end
+  print "hello from function f2!"
+  f()
+endfun
 ```
 
-to call the procedure just put its name and parentheses like this:
+to call the function just put its name and parentheses like this:
 
 ```
 f2()
-f()
 ```
 
-## current features
+## Current features
 
-* arithmetic calculations with integers
-* assignment of values in variables (only strings and integers for now)
-* string concatenation
-* print function
-* for loop
-* for in I loop
-* if block
-* procedures *(being fixed)*
+* Arithmetic calculations with integers
+* Assignment of values in variables (only strings and integers for now)
+* String concatenation
+* Print function
+* For loop
+* For in I loop
+* If block
+* Functions
