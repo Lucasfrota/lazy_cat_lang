@@ -40,7 +40,8 @@ reserved = {
    'not' : 'NOT',
    'return' : 'RETURN',
    'in' : 'IN',
-   'end' : 'END',
+   'endfor' : 'ENDFOR',
+   'endfun' : 'ENDFUN',
    'fun' : 'FUN',
 }
 

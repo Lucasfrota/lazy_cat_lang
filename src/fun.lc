@@ -1,5 +1,12 @@
 fun f:
   print "hello world!"
-end
+endfun
 
-f()
+fun f2:
+  for 1 to 5:
+    print "hello"//f()
+  endfor
+endfun
+
+
+f2()
