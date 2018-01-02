@@ -1,8 +1,10 @@
 var a = 0
+
 for 1 to 5:
   a = a + 1
   print a
 endfor
+
 print "a: "
 print a
 

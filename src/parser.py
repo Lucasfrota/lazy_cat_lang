@@ -19,11 +19,11 @@ precedence = (
 )
 
 variables = {}
-procedures = []
+functions = []
 
 jumped = False
 
-program_counter = -1
+program_counter = 0
 code_lines = []
 
 def go_next_line():
@@ -41,62 +41,61 @@ def p_fun_expression(p):
     'statement : FUN ID LPAREN declaration_list RPAREN COLON'
     print "we got a function!"
 
-def p_procedure_expression(p):
+def p_function_expression(p):
     'statement : FUN ID COLON'
 
     go_next_line()
-    '''
-    commands_in_procedure = []
 
-    line_counter = current_line + 1
-    while code_lines[line_counter] != 'endfun\n':
-        commands_in_procedure.append(code_lines[line_counter])
-        null_lines_list.append(line_counter)
-        line_counter += 1
+    current_line = program_counter
+    first_line = program_counter
 
-    procedures.append([p[2], commands_in_procedure])
-    '''
+    line = code_lines[current_line]
 
-def p_procedure_expression_paren(p):
+    while line != "endfun\n":
+        current_line += 1
+        line = code_lines[current_line]
+
+    set_next_line(current_line)
+
+
+    functions.append([p[2], [first_line], [current_line] ])
+
+def p_function_expression_paren(p):
     'statement : FUN ID LPAREN RPAREN COLON'
-
+    
     go_next_line()
-    '''
-    commands_in_procedure = []
 
-    line_counter = current_line + 1
-    while code_lines[line_counter] != 'endfun\n':
-        commands_in_procedure.append(code_lines[line_counter])
-        null_lines_list.append(line_counter)
-        line_counter += 1
+    current_line = program_counter
+    first_line = program_counter
 
-    procedures.append([p[2], commands_in_procedure])
-    '''
+    line = code_lines[current_line]
 
-def p_call_procedure(p):
+    while line != "endfun\n":
+        current_line += 1
+        line = code_lines[current_line]
+
+    set_next_line(current_line)
+
+
+    functions.append([p[2], [first_line], [current_line] ])
+
+def p_call_function(p):
     'expression : ID LPAREN RPAREN'
 
     go_next_line()
-    '''
-    there_is_procedure = False
 
-    for i in procedures:
-        if p[1] == i[0]:
-            there_is_procedure = True
+    there_is_function = False
 
-            #null_lines_list.append(code_lines.index(code_lines[current_line]))
-            #print "code: " + code_lines[current_line] + ", " + str(current_line)
-            code_lines.
-            sub_line_counter = code_lines.index(code_lines[current_line]) + 1
-            #print p[1] + ": " + str(i[1])
-            for j in i[1]:
-                #print "j: " + j
-                code_lines.insert(sub_line_counter, j)
-                sub_line_counter += 1
+    for function in functions:
+        if p[1] == function[0]:
+            current_line = program_counter
+            for i in range(function[1][0], function[2][0]):
+                parser.parse(code_lines[i])
+            set_next_line(current_line)
+            there_is_function = True
 
-    if not there_is_procedure:
-        print "there is no procedure called '" + p[1] + "'"
-    '''
+    if not there_is_function:
+        print "there is no function called '" + p[1] + "'"
 
 def p_declaration_list_1(t):
     'declaration_list : expression'
