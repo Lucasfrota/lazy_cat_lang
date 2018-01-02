@@ -42,6 +42,7 @@ reserved = {
    'in' : 'IN',
    'endfor' : 'ENDFOR',
    'endfun' : 'ENDFUN',
+   'endif' : 'ENDIF',
    'fun' : 'FUN',
 }
 

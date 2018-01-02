@@ -2,9 +2,15 @@ from sys import *
 import ply.yacc as yacc
 from lex import tokens
 
+global run_line
+run_line = True
+
 parser = None
 for_list = []
 quantity_for = 0
+
+if_list = []
+quantity_if = 0
 
 precedence = (
     ('left', 'PLUS', 'MINUS'),
@@ -179,7 +185,19 @@ def p_print_string(p):
 
 def p_if(p):
     'statement : IF expression COLON'
-    go_next_line()
+
+    if p[2] == True:
+        go_next_line()
+    else:
+        current_line = program_counter
+
+        line = code_lines[current_line]
+
+        while line != "endif\n":
+            current_line += 1
+            line = code_lines[current_line]
+
+        set_next_line(current_line)
 
     '''
     commands_in_loop = []
@@ -190,6 +208,11 @@ def p_if(p):
             null_lines_list.append(line_counter)
             line_counter += 1
     '''
+
+def p_endif(p):
+    'statement : ENDIF'
+    go_next_line()
+    pass
 
 def p_statement_assign(p):
     'statement : ID RECEIVE expression'
@@ -291,9 +314,10 @@ if __name__ == '__main__':
     code_lines.append("program_end")
     if code_lines is not None:
         while code_lines[program_counter] != 'program_end':
-            #print code_lines[program_counter]
-            parser.parse(code_lines[program_counter])
-            jumped = False
+            if run_line is True:
+                #print "-> " + code_lines[program_counter]
+                parser.parse(code_lines[program_counter])
+                jumped = False
 '''
     try:
 

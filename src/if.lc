@@ -1,12 +1,12 @@
 a = 1
 if a < 2:
   print "1 is greater then 2!"
-end
+endif
 
 if a > 2:
   print "it is not going here"
-end
+endif
 
 if 1 <= 1:
   print "it is hereee!"
-end
+endif
