@@ -5,6 +5,7 @@ endfun
 fun f2():
   print "hello from function f2!"
   f()
+  return "hello"
 endfun
 
 var a = "aa"

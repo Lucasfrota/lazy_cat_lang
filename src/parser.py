@@ -193,9 +193,14 @@ def p_endfun(p):
     pass
 
 def p_return(p):
-    'statement : RETURN'
+    'statement : RETURN return_type'
+    print "return here"
     go_next_line()
     pass
+
+def p_return_types(p):
+    '''return_type : STRING
+                   | INTEGER'''
 
 def p_print_expression(p):
     'statement : PRINT expression'
