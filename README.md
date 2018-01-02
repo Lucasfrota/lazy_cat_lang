@@ -58,7 +58,7 @@ In this example the string "hello world" will be printed 5 times
 the if statement is pretty simple, you just have to write a boolean expression after the 'if', if it is true the lines of code inside the block will be executed, otherwise the program will jump to the end of the block
 
 ```
-a = 1
+var a = 1
 if a < 2:
   print "1 is greater then 2!"
 end
@@ -96,4 +96,4 @@ f()
 * for loop
 * for in I loop
 * if block
-* procedures
+* procedures *(being fixed)*
