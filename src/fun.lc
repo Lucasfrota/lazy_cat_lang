@@ -1,12 +1,16 @@
 fun f:
-  print "hello from function f!"
+  return 1
 endfun
 
 fun f2():
   print "hello from function f2!"
-  f()
-  return "hello"
+  var b = f()
+  print b
+  b = b + 1
+  return b
 endfun
 
-var a = "aa"
+var a = 1
 a = f2()
+
+print a

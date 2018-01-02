@@ -12,6 +12,9 @@ quantity_for = 0
 if_list = []
 quantity_if = 0
 
+global current_function
+current_function = None
+
 precedence = (
     ('left', 'PLUS', 'MINUS'),
     ('left', 'TIMES', 'DIVIDE'),
@@ -50,17 +53,22 @@ def call_function(name):
             there_is_function = True
 
     if not there_is_function:
-        print "there is no function called '" + p[1] + "'"
+        print "there is no function called '" + name + "'"
+
+#########################
 
 def p_fun_expression(p):
     'statement : FUN ID LPAREN declaration_list RPAREN COLON'
     print "we got a function!"
 
-def p_function_expression(p):
+def p_function_no_param(p):
     'statement : FUN ID COLON'
 
     go_next_line()
 
+    global current_function
+    current_function = p[2]
+
     current_line = program_counter
     first_line = program_counter
 
@@ -73,13 +81,16 @@ def p_function_expression(p):
     set_next_line(current_line)
 
 
-    functions.append([p[2], [first_line], [current_line] ])
+    functions.append([p[2], [first_line], [current_line], [None] ])
 
-def p_function_expression_paren(p):
+def p_function_no_param_paren(p):
     'statement : FUN ID LPAREN RPAREN COLON'
 
     go_next_line()
 
+    global current_function
+    current_function = p[2]
+
     current_line = program_counter
     first_line = program_counter
 
@@ -92,7 +103,7 @@ def p_function_expression_paren(p):
     set_next_line(current_line)
 
 
-    functions.append([p[2], [first_line], [current_line] ])
+    functions.append([p[2], [first_line], [current_line], [None] ])
 
 def p_new_statement_function(p):
     'statement : VAR ID RECEIVE ID LPAREN RPAREN'
@@ -100,15 +111,29 @@ def p_new_statement_function(p):
 
     call_function(p[4])
 
-    print "we got a new statement!"
+    variables[p[2]] = None
+
+    for function in functions:
+        if current_function == function[0]:
+            variables[p[2]] = function[3]
 
 def p_statement_function(p):
     'statement : ID RECEIVE ID LPAREN RPAREN'
+
     go_next_line()
 
     call_function(p[3])
 
-    print "we got a statement!"
+    try:
+        value = variables[p[1]]
+
+        for function in functions:
+            if current_function == function[0]:
+                variables[p[1]] = function[3]
+
+    except LookupError:
+        print("Undefined variable '%s'" % p[1])
+        p[0] = 0
 
 def p_call_function(p):
     'expression : ID LPAREN RPAREN'
@@ -192,15 +217,27 @@ def p_endfun(p):
     go_next_line()
     pass
 
-def p_return(p):
-    'statement : RETURN return_type'
-    print "return here"
+def p_return_string(p):
+    'statement : RETURN STRING'
+
     go_next_line()
+
+    for function in functions:
+        if current_function == function[0]:
+            function[3] = p[2][1:-1]
+
     pass
 
-def p_return_types(p):
-    '''return_type : STRING
-                   | INTEGER'''
+def p_return_expression(p):
+    'statement : RETURN expression'
+
+    go_next_line()
+
+    for function in functions:
+        if current_function == function[0]:
+            function[3] = p[2]
+
+    pass
 
 def p_print_expression(p):
     'statement : PRINT expression'
@@ -227,16 +264,6 @@ def p_if(p):
             line = code_lines[current_line]
 
         set_next_line(current_line)
-
-    '''
-    commands_in_loop = []
-
-    if p[2] == False:
-        line_counter = current_line + 1
-        while code_lines[line_counter] != 'end\n':
-            null_lines_list.append(line_counter)
-            line_counter += 1
-    '''
 
 def p_endif(p):
     'statement : ENDIF'
@@ -360,7 +387,6 @@ if __name__ == '__main__':
     if code_lines is not None:
         while code_lines[program_counter] != 'program_end':
             if run_line is True:
-                #print "-> " + code_lines[program_counter]
                 parser.parse(code_lines[program_counter])
                 jumped = False
 '''
