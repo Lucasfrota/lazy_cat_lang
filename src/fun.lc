@@ -10,7 +10,6 @@ fun f2():
   return b
 endfun
 
-var a = 1
-a = f2()
+var a = f2()
 
 print a

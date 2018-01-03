@@ -1,5 +1,6 @@
 from sys import *
 import ply.yacc as yacc
+from models.for_model import ForModel
 from lex import tokens
 
 global run_line
@@ -103,7 +104,7 @@ def p_function_no_param_paren(p):
     set_next_line(current_line)
 
 
-    functions.append([p[2], [first_line], [current_line], [None] ])
+    functions.append([p[2], [first_line], [current_line], None ])
 
 def p_new_statement_function(p):
     'statement : VAR ID RECEIVE ID LPAREN RPAREN'
@@ -160,7 +161,7 @@ def p_for_expression(p):
     else:
         is_increasing = False
 
-    for_list.append([["for" + str(quantity_for)], [ p[2], p[4] ], [is_increasing], [program_counter + 1], [None] ])
+    for_list.append(ForModel("for" + str(quantity_for), [ p[2], p[4] ], is_increasing, program_counter + 1, None ))#[["for" + str(quantity_for)], [ p[2], p[4] ], [is_increasing], [program_counter + 1], None ])
 
     go_next_line()
 
@@ -177,9 +178,9 @@ def p_for_in_expression(p):
         is_increasing = False
 
     is_for_in = True
-    for_list.append([["for" + str(quantity_for)], [ p[4], p[6] ], [is_increasing], [program_counter + 1], [p[2]] ])
+    for_list.append(ForModel("for" + str(quantity_for), [ p[4], p[6] ], is_increasing, program_counter +1, p[2] ) )#[["for" + str(quantity_for)], [ p[4], p[6] ], [is_increasing], [program_counter + 1], p[2] ])
 
-    variables[p[2]] = for_list[quantity_for][1][0]
+    variables[p[2]] = p[4]#for_list[quantity_for][1][0]
 
     go_next_line()
 
@@ -189,25 +190,25 @@ def p_endfor(p):
 
     global quantity_for
 
-    is_increasing = for_list[quantity_for][2][0]
+    is_increasing = for_list[quantity_for].is_increasing
 
     if is_increasing == True:
-        if for_list[quantity_for][1][0] < for_list[quantity_for][1][1]:
-            for_list[quantity_for][1][0] += 1
-            set_next_line(for_list[quantity_for][3][0])
+        if for_list[quantity_for].numbers[0] < for_list[quantity_for].numbers[1]:
+            for_list[quantity_for].numbers[0] += 1
+            set_next_line(for_list[quantity_for].program_counter)
 
-            if for_list[quantity_for][4][0] is not None:
-                variables[for_list[quantity_for][4][0]] = for_list[quantity_for][1][0]
+            if for_list[quantity_for].iterator is not None:
+                variables[for_list[quantity_for].iterator] = for_list[quantity_for].numbers[0]
 
         else:
             quantity_for += 1
     else:
-        if for_list[quantity_for][1][0] > for_list[quantity_for][1][1]:
-            for_list[quantity_for][1][0] -= 1
-            set_next_line(for_list[quantity_for][3][0])
+        if for_list[quantity_for].numbers[0] > for_list[quantity_for].numbers[1]:
+            for_list[quantity_for].numbers[0] -= 1
+            set_next_line(for_list[quantity_for].program_counter)
 
-            if for_list[quantity_for][4][0] is not None:
-                variables[for_list[quantity_for][4][0]] = for_list[quantity_for][1][0]
+            if for_list[quantity_for].iterator is not None:
+                variables[for_list[quantity_for].iterator] = for_list[quantity_for].numbers[0]
 
         else:
             quantity_for += 1
