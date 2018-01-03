@@ -1,5 +1,7 @@
 # lazy_cat_lang
 
+![lazy cat logo](img/lazy_cat.png)
+
 Lazy cat is a programming language that aims to be so simple that any programmer can learn its features in around a half hour
 
 # how to use
