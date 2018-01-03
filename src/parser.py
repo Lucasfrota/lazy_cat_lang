@@ -1,6 +1,7 @@
 from sys import *
 import ply.yacc as yacc
 from models.for_model import ForModel
+from models.function_model import FunctionModel
 from lex import tokens
 
 global run_line
@@ -46,9 +47,9 @@ def call_function(name):
     there_is_function = False
 
     for function in functions:
-        if name == function[0]:
+        if name == function.function_name:
             current_line = program_counter
-            for i in range(function[1][0], function[2][0]):
+            for i in range(function.function_line, function.current_line):
                 parser.parse(code_lines[i])
             set_next_line(current_line)
             there_is_function = True
@@ -82,7 +83,7 @@ def p_function_no_param(p):
     set_next_line(current_line)
 
 
-    functions.append([p[2], [first_line], [current_line], [None] ])
+    functions.append( FunctionModel(p[2], first_line, current_line, None) )#[p[2], [first_line], [current_line], [None] ])
 
 def p_function_no_param_paren(p):
     'statement : FUN ID LPAREN RPAREN COLON'
@@ -104,7 +105,7 @@ def p_function_no_param_paren(p):
     set_next_line(current_line)
 
 
-    functions.append([p[2], [first_line], [current_line], None ])
+    functions.append( FunctionModel(p[2], first_line, current_line, None) ) #[p[2], [first_line], [current_line], None ])
 
 def p_new_statement_function(p):
     'statement : VAR ID RECEIVE ID LPAREN RPAREN'
@@ -115,8 +116,8 @@ def p_new_statement_function(p):
     variables[p[2]] = None
 
     for function in functions:
-        if current_function == function[0]:
-            variables[p[2]] = function[3]
+        if current_function == function.function_name:
+            variables[p[2]] = function.function_return
 
 def p_statement_function(p):
     'statement : ID RECEIVE ID LPAREN RPAREN'
@@ -129,8 +130,8 @@ def p_statement_function(p):
         value = variables[p[1]]
 
         for function in functions:
-            if current_function == function[0]:
-                variables[p[1]] = function[3]
+            if current_function == function.function_name:
+                variables[p[1]] = function.function_return
 
     except LookupError:
         print("Undefined variable '%s'" % p[1])
@@ -161,7 +162,7 @@ def p_for_expression(p):
     else:
         is_increasing = False
 
-    for_list.append(ForModel("for" + str(quantity_for), [ p[2], p[4] ], is_increasing, program_counter + 1, None ))#[["for" + str(quantity_for)], [ p[2], p[4] ], [is_increasing], [program_counter + 1], None ])
+    for_list.append(ForModel("for" + str(quantity_for), [ p[2], p[4] ], is_increasing, program_counter + 1, None ))
 
     go_next_line()
 
@@ -178,9 +179,9 @@ def p_for_in_expression(p):
         is_increasing = False
 
     is_for_in = True
-    for_list.append(ForModel("for" + str(quantity_for), [ p[4], p[6] ], is_increasing, program_counter +1, p[2] ) )#[["for" + str(quantity_for)], [ p[4], p[6] ], [is_increasing], [program_counter + 1], p[2] ])
+    for_list.append(ForModel("for" + str(quantity_for), [ p[4], p[6] ], is_increasing, program_counter +1, p[2] ) )
 
-    variables[p[2]] = p[4]#for_list[quantity_for][1][0]
+    variables[p[2]] = p[4]
 
     go_next_line()
 
@@ -224,8 +225,8 @@ def p_return_string(p):
     go_next_line()
 
     for function in functions:
-        if current_function == function[0]:
-            function[3] = p[2][1:-1]
+        if current_function == function.function_name:
+            function.function_return = p[2][1:-1]
 
     pass
 
@@ -235,8 +236,8 @@ def p_return_expression(p):
     go_next_line()
 
     for function in functions:
-        if current_function == function[0]:
-            function[3] = p[2]
+        if current_function == function.function_name:
+            function.function_return = p[2]
 
     pass
 
