@@ -1,15 +1,18 @@
-fun f:
-  return 1
+fun f():
+  print "a"
+  print "aaa"
 endfun
 
 fun f2():
-  print "hello from function f2!"
-  var b = f()
-  print b
-  b = b + 1
-  return b
+  print "b"
+  print "c"
+for 1 to 5:
+  f()
+endfor
 endfun
 
-var a = f2()
+f2()
 
-print a
+//var a = f2()
+
+//print a

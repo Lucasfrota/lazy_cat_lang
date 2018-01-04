@@ -1,0 +1,13 @@
+fun f:
+  print "a"
+endfun
+
+var a = 0
+fun f2:
+  print "hello world!"
+  a = a + 1
+  print a
+  f() for 3
+endfun
+
+f2() for 2
