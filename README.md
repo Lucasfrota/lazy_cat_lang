@@ -6,10 +6,16 @@ Lazy cat is a programming language that aims to be so simple that any programmer
 
 # how to use
 
-Currently there are two main ways to use lady cat, you may run a script that uses the extension .lc by using the command
+Currently there are two main ways to use lady cat, you may run a script that uses the extension .lc by using the command (this command just works in windows)
 
 ```
 lazy_run hello_world.lc
+```
+
+for now lazy cat is running over python 2.7, so if you want to run it you'll need to have this version of python in your machine. You can also run it directly from python by using the command 
+
+```
+python parser.py hello_world.lc
 ```
 
 ## Basics
