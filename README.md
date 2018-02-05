@@ -24,7 +24,7 @@ python parser.py hello_world.lc
 
 To run anything in lazy cat it's necessary to use the Main, only code inside the main.
 
-'''
+```
 fun fib:
   //program is execute
 endfun
@@ -32,7 +32,7 @@ endfun
 main:
 	fib()
 endmain
-'''
+```
 
 It's important to pay attention in the endmain token, it represents the end of the Main function
 
