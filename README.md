@@ -20,14 +20,31 @@ python parser.py hello_world.lc
 
 ## Basics
 
+### Main
+
+To run anything in lazy cat it's necessary to use the Main, only code inside the main.
+
+'''
+fun fib:
+  //program is execute
+endfun
+
+main:
+	fib()
+endmain
+'''
+
+It's important to pay attention in the endmain token, it represents the end of the Main function
+
 ### Variables
 
-Lazy cat is a weak typed language so if you want to create a variable it is only required that you say its name and then its value like this:
+Lazy cat is a strong typed language so if you want to create a variable you'll need to declare its name, its type and its value like this:
 
 ```
-var a = 10
-var b = "abc"
+a:int = 10
+b:str = "abc"
 ```
+
 ### Print
 
 To show the variables content just print it!
@@ -35,6 +52,13 @@ To show the variables content just print it!
 ```
 print a
 print b
+```
+
+You can also print values directly
+
+```
+print 1
+print "hello world!"
 ```
 
 ### Loops
