@@ -26,7 +26,7 @@ To run anything in lazy cat it's necessary to use the Main, only code inside the
 
 ```
 fun fib:
-  //program is execute
+  //function steps
 endfun
 
 main:
