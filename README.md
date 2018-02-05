@@ -26,11 +26,11 @@ To run anything in lazy cat it's necessary to use the Main, only code inside the
 
 ```
 fun fib:
-  //function steps
+    //function steps
 endfun
 
 main:
-	fib()
+    fib()
 endmain
 ```
 
