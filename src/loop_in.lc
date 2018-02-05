@@ -1,9 +1,11 @@
-for i in 5 to 1:
-  print i
-endfor
+main:
+	for i in 5 to 1:
+	  print i
+	endfor
 
-print ""
+	print ""
 
-for j in 1 to 5:
-  print j
-endfor
+	for j in 1 to 5:
+	  print j
+	endfor
+endmain

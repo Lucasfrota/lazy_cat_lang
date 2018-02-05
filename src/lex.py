@@ -27,6 +27,7 @@ boolean_operators = [
 ]
 
 reserved = {
+   'main' : 'MAIN',
    'print' : 'PRINT',
    'if' : 'IF',
    'for' : 'FOR',
@@ -41,10 +42,15 @@ reserved = {
    'return' : 'RETURN',
    'var' : 'VAR',
    'in' : 'IN',
+   'endmain' : 'ENDMAIN',
    'endfor' : 'ENDFOR',
    'endfun' : 'ENDFUN',
    'endif' : 'ENDIF',
    'fun' : 'FUN',
+   'pause' : 'PAUSE',
+   'int' : 'INT',
+   'float' : 'FLOAT_TYPE',
+   'str' : 'STRING_TYPE'
 }
 
 literals = [ '{', '}']

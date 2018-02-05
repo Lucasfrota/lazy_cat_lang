@@ -1,12 +1,16 @@
-var a = 1
-if a < 2:
-  print "1 is greater then 2!"
-endif
+a:int = 3
 
-if a > 2:
-  print "it is not going here"
-endif
+main:
+	if a < 2:
+	  print "A is greater then 2!"
+	endif
 
-if 1 <= 1:
-  print "it is hereee!"
-endif
+	if a > 2:
+	  print "it is not going here"
+	endif
+
+	if 1 <= 1:
+	  print "it is hereee!"
+	endif
+	//pause()
+endmain

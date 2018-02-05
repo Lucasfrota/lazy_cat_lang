@@ -1,6 +1,9 @@
-var a = 1
-print a
-a = a + 1
-print a
-a = a + 1
-print a
+fun f:
+	n1:int = 1
+	n2:int = 47
+	print n1 + n2 + 1 - 9
+endfun
+
+main:
+	f()
+endmain

@@ -1,2 +1,5 @@
-var hello = "Hello world"
-print hello
+hello:str = "Hello world"
+
+main:
+	print hello
+endmain

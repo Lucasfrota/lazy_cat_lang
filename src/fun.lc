@@ -1,18 +1,16 @@
-fun f():
+fun f:
   print "a"
   print "aaa"
 endfun
 
 fun f2():
-  print "b"
-  print "c"
-for 1 to 5:
-  f()
-endfor
+  	print "b"
+  	print "c"
+	for 1 to 5:
+	  f()
+	endfor
 endfun
 
-f2()
-
-//var a = f2()
-
-//print a
+main:
+	f2()
+endmain
