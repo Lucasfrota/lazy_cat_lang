@@ -116,7 +116,9 @@ endfun
 to call the function just put its name and parentheses like this:
 
 ```
-f2()
+main:
+    f2()
+endmain
 ```
 
 ## Current features
