@@ -1,14 +1,16 @@
-var a = 0
+main:
+	a:int = 0
 
-for 1 to 5:
-a = a + 1
-for 1 to 3:
-print a
-endfor
-endfor
+	for 1 to 5:
+		a = a + 1
+		for 1 to 3:
+			print a
+		endfor
+	endfor
 
-print ""
+	print ""
 
-for 5 to 1:
-  print "a"
-endfor
+	for 5 to 1:
+	  print "a"
+	endfor
+endmain

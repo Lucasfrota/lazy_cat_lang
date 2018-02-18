@@ -1,7 +1,5 @@
 from sys import *
 import ply.yacc as yacc
-from models.for_model import ForModel
-from models.function_model import FunctionModel
 from lex import tokens
 import os
 
