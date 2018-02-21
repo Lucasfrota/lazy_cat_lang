@@ -9,7 +9,7 @@ precedence = (
     ('right', 'UMINUS'),
 )
 
-file_name = str(argv[1][:-3]+".cpp")#'out.cpp'
+file_name = str(argv[1][:-3]+".cpp")
 output_file = open(file_name,'w')
 output_code = []
 
@@ -20,10 +20,6 @@ def p_main(p):
 def p_fun_expression(p):
     'statement : FUN ID LPAREN declaration_list RPAREN COLON'
     print "we got a function!"
-
-def p_function_no_param(p):
-	'statement : FUN ID COLON'
-	output_code.append("void " + p[2] + "(){")
 
 def p_function_no_param_paren(p):
 	'statement : FUN ID LPAREN RPAREN COLON'

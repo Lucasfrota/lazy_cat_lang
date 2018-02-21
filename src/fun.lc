@@ -1,4 +1,4 @@
-fun f:
+fun f():
   print "a"
   print "aaa"
 endfun

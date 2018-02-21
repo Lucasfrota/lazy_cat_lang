@@ -1,4 +1,4 @@
-fun f:
+fun f():
 	n1:int = 1
 	n2:int = 47
 	print n1 + n2 + 1 - 9
