@@ -103,7 +103,7 @@ in if statement we use 'endif' token to represent the end of the statement
 To create a function you just have to use the token 'fun' and define a name to your function, then you just need to define what your function does. to mark the end of the function you have to use the 'endfun' token
 
 ```
-fun f:
+fun f():
   print "hello from function f!"
 endfun
 
