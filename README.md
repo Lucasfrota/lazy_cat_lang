@@ -15,7 +15,7 @@ lazy_run hello_world.lc
 for now lazy cat is running over python 2.7, so if you want to run it you'll need to have this version of python in your machine. You can also run it directly from python by using the command 
 
 ```
-python parser.py hello_world.lc
+python lazy_run.py hello_world.lc
 ```
 
 ## Basics
