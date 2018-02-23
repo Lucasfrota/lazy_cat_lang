@@ -1,7 +1,7 @@
 first_num:int = 0//first numer in the sequence
 sec_num:int = 1
 
-fun fib:
+fun fib():
 	for 1 to 10:
 	  aux:int = first_num
 	  first_num = sec_num
